@@ -29,8 +29,8 @@ header {
 
 .galeria {
     display: flex;
-    height: 70vh;
-    width: 40vw;
+    height: 80vh;
+    width: 80vw;
 }
 
 .tipoHamburguesa {
@@ -42,7 +42,7 @@ header {
     flex-grow: 1;
     object-fit: cover;
     opacity: 1;
-    transition: 0.5s ease;
+    transition: 0.3s ease;
 }
 
 .galeria .tipoHamburguesa img {
@@ -99,6 +99,7 @@ h2 {
 }
 
 .textoTipoHamburguesa {
+    width: max-content;
     position: absolute;
     top: 10%;
     left: 50%;
