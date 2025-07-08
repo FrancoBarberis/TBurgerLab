@@ -4,6 +4,7 @@ https: //colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 * {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 body {
@@ -30,7 +31,6 @@ header {
     display: flex;
     height: 70vh;
     width: 40vw;
-    border-radius: 30%;
 }
 
 .tipoHamburguesa {
@@ -84,7 +84,7 @@ h2 {
 }
 
 .contenedorGaleria {
-    padding-top: 50px;
+    padding-top: 2vh;
     padding-bottom: 50px;
     display: flex;
     justify-content: center;
@@ -119,7 +119,9 @@ h2 {
 
 .listaIngredientes {
     position: absolute;
-    height: 100%;
+    bottom: 5%;
+    left: 20%;
+    height: fit-content;
     width: 100%;
     padding: 0;
     margin: 0;
