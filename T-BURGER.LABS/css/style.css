@@ -1,0 +1,144 @@
+/* PALETA DE COLORES
+
+https: //colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FF2626;
+}
+
+@font-face {
+    font-family: "REFont";
+    src: url(../sources/fonts/3724-font.otf);
+}
+
+@font-face {
+    font-family: "REFont2";
+    src: url(../sources/fonts/Resident\ Evil\ Large.ttf);
+}
+
+header {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+}
+
+.galeria {
+    display: flex;
+    height: 70vh;
+    width: 40vw;
+    border-radius: 30%;
+}
+
+.tipoHamburguesa {
+    /* NECESARIO PARA AGREGAR TEXTO DESPUES DEL HOVER */
+    display: flex;
+    height: 100%;
+    border-radius: inherit;
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+.galeria .tipoHamburguesa img {
+    height: auto;
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    filter: brightness(200%);
+}
+
+.tipoHamburguesa:hover {
+    cursor: crosshair;
+    width: 15vw;
+    opacity: .8;
+    filter: contrast(140%);
+}
+
+h1 {
+    color: #FFE6E6;
+    font-family: "REFont";
+    font-size: 100px;
+    font-weight: lighter;
+}
+
+span {
+    color: #BD1616;
+    font-family: "REFont";
+    font-size: 100px;
+    font-weight: lighter;
+}
+
+
+h2 {
+    color: #FFE6E6;
+    padding: 0;
+    font-family: "REFont";
+    font-size: 80px;
+    font-weight: lighter;
+}
+
+.contenedorGaleria {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.telefono {
+    padding: 0;
+    color: #BD1616;
+    font-family: "REFont2";
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.textoTipoHamburguesa {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: #FFE6E6;
+    font-family: "REFont";
+    font-size: 80px;
+    font-weight: lighter;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .7s ease;
+}
+
+.tipoHamburguesa:hover .textoTipoHamburguesa {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.listaIngredientes {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.ingrediente {
+    padding: 0;
+    margin: 0;
+    color: #FFE6E6;
+    font-family: "REFont";
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.tipoHamburguesa:hover .listaIngredientes {
+    opacity: 1;
+}
