@@ -4,7 +4,6 @@ https: //colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 * {
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 body {
@@ -146,4 +145,76 @@ h2 {
 
 .tipoHamburguesa:hover .listaIngredientes {
     opacity: 1;
+}
+
+
+/* MEDIA QUERY PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 480px) {
+  .galeria {
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+  }
+  .tipoHamburguesa {
+    width: 100vw;
+    height: auto;
+    min-height: 200px;
+    flex-grow: unset;
+    margin-bottom: 20px;
+    opacity: 1;
+    filter: none;
+    transition: none;
+    position: relative; /* Asegura que el texto se posicione sobre la imagen */
+    display: block;     /* Quita el flex para evitar que el texto se ponga al lado */
+  }
+  .galeria .tipoHamburguesa img {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+    filter: none;
+    transition: none;
+    display: block;
+  }
+  .textoTipoHamburguesa {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    position: absolute; /* Encima de la imagen */
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: none;
+    color: #FFE6E6;
+    width: max-content;
+    font-size: 60px;
+    text-align: center;
+    z-index: 2;
+  }
+  .listaIngredientes {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    position: absolute; /* Encima de la imagen, pero abajo */
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    transition: none;
+    width: 90vw;
+    z-index: 2;
+    background: rgba(0,0,0,0.4); /* Opcional: fondo semitransparente para legibilidad */
+    padding: 10px 0;
+    border-radius: 10px;
+  }
+  /* Elimina el efecto hover en mobile */
+  .tipoHamburguesa:hover,
+  .tipoHamburguesa:hover .textoTipoHamburguesa,
+  .tipoHamburguesa:hover .listaIngredientes {
+    width: 100vw !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    visibility: visible !important;
+    transition: none !important;
+    cursor: default !important;
+  }
 }
