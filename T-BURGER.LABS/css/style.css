@@ -1,6 +1,6 @@
 /* PALETA DE COLORES
 
-https: //colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
+https://colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 * {
     margin: 0;
     padding: 0;
@@ -28,57 +28,57 @@ header {
 
 .galeria {
     display: flex;
-    height: 80vh;
-    width: 80vw;
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
 }
 
 .tipoHamburguesa {
     position: relative;
-    display: flex;
-    height: 100%;
+    display: block;
+    width: 100vw;
+    height: auto;
+    min-height: 200px;
+    margin-bottom: 20px;
     border-radius: inherit;
-    width: 0;
-    flex-grow: 1;
-    object-fit: cover;
     opacity: 1;
-    transition: 0.3s ease;
+    filter: none;
+    transition: none;
+    cursor: default;
 }
 
 .galeria .tipoHamburguesa img {
+    width: 100vw;
     height: auto;
-    width: 0;
-    flex-grow: 1;
     object-fit: cover;
-    filter: brightness(200%);
+    filter: none;
+    transition: none;
+    display: block;
 }
 
 .tipoHamburguesa:hover {
-    cursor: crosshair;
-    width: 15vw;
-    opacity: .8;
-    filter: contrast(140%);
+    /* Sin efecto hover en mobile */
 }
 
 h1 {
     color: #FFE6E6;
     font-family: "REFont";
-    font-size: 100px;
+    font-size: 60px;
     font-weight: lighter;
 }
 
 span {
     color: #BD1616;
     font-family: "REFont";
-    font-size: 100px;
+    font-size: 60px;
     font-weight: lighter;
 }
-
 
 h2 {
     color: #FFE6E6;
     padding: 0;
     font-family: "REFont";
-    font-size: 80px;
+    font-size: 40px;
     font-weight: lighter;
 }
 
@@ -98,119 +98,25 @@ h2 {
 }
 
 .textoTipoHamburguesa {
-    width: max-content;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    color: #FFE6E6;
-    font-family: "REFont";
-    font-size: 80px;
-    font-weight: lighter;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: all .7s ease;
-}
-
-.tipoHamburguesa:hover .textoTipoHamburguesa {
-    transform: translate(-50%, 0);
     opacity: 1;
     visibility: visible;
-}
-
-.listaIngredientes {
-    position: absolute;
-    bottom: 5%;
-    left: 20%;
-    height: fit-content;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    transition: all .5s ease;
-}
-
-.ingrediente {
-    padding: 0;
-    margin: 0;
-    color: #FFE6E6;
-    font-family: "REFont";
-    font-size: 30px;
-    font-weight: lighter;
-}
-
-.tipoHamburguesa:hover .listaIngredientes {
-    opacity: 1;
-}
-
-.listaIngredientes {
-  list-style: none;
-  padding-left: 0;
-}
-.listaIngredientes li::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  vertical-align: middle;
-  background-image: url('../sources/imgs/UmbrellaIconSinFondo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-/* MEDIA QUERY PARA DISPOSITIVOS MÓVILES */
-@media (max-width: 480px) {
-  .galeria {
-    flex-direction: column;
-    height: auto;
-    width: 100vw;
-  }
-  .tipoHamburguesa {
-    width: 100vw !important;
-    height: auto;
-    min-height: 200px;
-    flex-grow: unset;
-    margin-bottom: 20px;
-    opacity: 1 !important;
-    filter: none !important;
-    transition: none !important;
-    position: relative;
-    display: block;
-    cursor: default !important;
-  }
-  .galeria .tipoHamburguesa img {
-    width: 100vw;
-    height: auto;
-    object-fit: cover;
-    filter: none;
-    transition: none;
-    display: block;
-  }
-  .textoTipoHamburguesa {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
+    pointer-events: auto;
     position: absolute;
     left: 50%;
     top: 10%;
-    transform: translateX(-50%) !important;
-    transition: none !important;
+    transform: translateX(-50%);
+    transition: none;
     color: #FFE6E6;
     width: max-content;
-    font-size: 60px;
+    font-size: 40px;
     text-align: center;
     z-index: 2;
-  }
-  .listaIngredientes {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
+}
+
+.listaIngredientes {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     position: absolute;
     left: 30%;
     bottom: 5%;
@@ -219,6 +125,112 @@ h2 {
     background: rgba(0,0,0,0.4);
     padding: 10px 20px;
     border-radius: 10px;
-    transform: none !important;
-  }
+    transform: none;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingrediente {
+    padding: 0;
+    margin: 0;
+    color: #FFE6E6;
+    font-family: "REFont";
+    font-size: 24px;
+    font-weight: lighter;
+}
+
+.listaIngredientes li::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-image: url('../sources/imgs/UmbrellaIconSinFondo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* TABLET: Cambios para pantallas medianas */
+@media (min-width: 600px) {
+    .galeria {
+        flex-direction: row;
+        height: 80vh;
+        width: 90vw;
+    }
+    .tipoHamburguesa {
+        width: 0;
+        height: 100%;
+        min-height: unset;
+        flex-grow: 1;
+        margin-bottom: 0;
+        display: flex;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+    .galeria .tipoHamburguesa img {
+        width: 0;
+        height: auto;
+        flex-grow: 1;
+        filter: brightness(200%);
+        transition: 0.3s ease;
+    }
+    .textoTipoHamburguesa {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        font-size: 60px;
+        transition: all .7s ease;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+    .listaIngredientes {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        left: 20%;
+        bottom: 5%;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+        padding: 10px 20px;
+        border-radius: 10px;
+        transition: all .5s ease;
+    }
+    .tipoHamburguesa:hover {
+        cursor: crosshair;
+        width: 15vw;
+        opacity: .8;
+        filter: contrast(140%);
+    }
+    .tipoHamburguesa:hover .textoTipoHamburguesa {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+    }
+    .tipoHamburguesa:hover .listaIngredientes {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* DESKTOP: Cambios para pantallas grandes */
+@media (min-width: 1024px) {
+    .galeria {
+        width: 80vw;
+    }
+    h1, span {
+        font-size: 100px;
+    }
+    h2 {
+        font-size: 80px;
+    }
+    .textoTipoHamburguesa {
+        font-size: 80px;
+    }
+    .ingrediente {
+        font-size: 30px;
+    }
 }
