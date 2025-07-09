@@ -80,6 +80,11 @@ h2 {
   font-weight: lighter;
 }
 
+.iconoWSP {
+  width: 50px;
+  height: 50px;
+}
+
 .contacto {
   display: flex;
   justify-content: center;
@@ -179,7 +184,6 @@ h2 {
     width: 0;
     height: auto;
     flex-grow: 1;
-    filter: brightness(200%);
     transition: 0.3s ease;
   }
   .textoTipoHamburguesa {
@@ -242,7 +246,7 @@ h2 {
     pointer-events: auto;
   }
   .tipoHamburguesa:hover img {
-    filter: brightness(140%);
     opacity: 1;
+    filter: brightness(140%);
   }
 }
