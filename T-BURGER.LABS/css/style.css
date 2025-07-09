@@ -123,6 +123,9 @@ h2 {
   font-size: 40px;
   text-align: center;
   z-index: 2;
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 8px 24px;              
+  border-radius: 12px;
 }
 
 .listaIngredientes {
@@ -140,6 +143,20 @@ h2 {
   list-style: none;
   display: flex;
   flex-direction: column;
+}
+
+.fotoHamburguesa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 60vw;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.8;
+  filter: brightness(120%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .ingrediente {
