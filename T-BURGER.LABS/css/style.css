@@ -147,6 +147,22 @@ h2 {
     opacity: 1;
 }
 
+.listaIngredientes {
+  list-style: none;
+  padding-left: 0;
+}
+.listaIngredientes li::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background-image: url('../sources/imgs/UmbrellaIconSinFondo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 /* MEDIA QUERY PARA DISPOSITIVOS MÓVILES */
 @media (max-width: 480px) {
