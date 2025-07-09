@@ -7,7 +7,7 @@ https://colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 }
 
 body {
-  background-color: #ff2626;
+  background-color: #000000;
 }
 
 @font-face {
@@ -47,13 +47,13 @@ header {
   cursor: default;
 }
 
-.galeria .tipoHamburguesa img {
+.tipoHamburguesa img {
   width: 100vw;
   height: auto;
   object-fit: cover;
-  filter: none;
-  transition: none;
+  transition: filter 0.3s ease;
   display: block;
+  opacity: 0.9;
 }
 
 h1 {
@@ -80,6 +80,13 @@ h2 {
   font-weight: lighter;
 }
 
+.contacto {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 20px;
+}
 .contenedorGaleria {
   padding-top: 2vh;
   padding-bottom: 50px;
@@ -196,22 +203,7 @@ h2 {
     border-radius: 10px;
     transition: all 0.5s ease;
   }
-  .tipoHamburguesa:hover {
-    cursor: crosshair;
-    width: 15vw;
-    opacity: 0.8;
-    filter: contrast(140%);
-  }
-  .tipoHamburguesa:hover .textoTipoHamburguesa {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate(-50%, 0);
-  }
-  .tipoHamburguesa:hover .listaIngredientes {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  
 }
 
 /* DESKTOP: Cambios para pantallas grandes */
@@ -229,7 +221,28 @@ h2 {
   .textoTipoHamburguesa {
     font-size: 80px;
   }
+
   .ingrediente {
     font-size: 30px;
+  }
+  
+  .tipoHamburguesa:hover {
+    cursor: crosshair;
+    width: 15vw;
+
+  }
+  .tipoHamburguesa:hover .textoTipoHamburguesa {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+  .tipoHamburguesa:hover .listaIngredientes {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .tipoHamburguesa:hover img {
+    filter: brightness(140%);
+    opacity: 1;
   }
 }
