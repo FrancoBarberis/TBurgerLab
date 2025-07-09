@@ -102,7 +102,7 @@
           </ul>
         </div>
         <div class="tipoHamburguesa">
-          <img src="/T-BURGER.LABS/sources/imgs/nemesis.png" alt="armaBiologica" />
+          <img src="/T-BURGER.LABS/sources/imgs/Ustanak.webp" alt="armaBiologica" />
           <h3 class="textoTipoHamburguesa">B.O.W.</h3>
           <div class="contenedorFotoHamburguesa">
             <img class="fotoHamburguesa" src="/T-BURGER.LABS/sources/imgs/HamburguesaBOW.webp" alt="hamburguesaBOW" />
@@ -138,14 +138,15 @@
   align-items: center;
   background: none;
   padding: 0;
-  margin: 0;
-  width: 170px;      /* Solo ancho fijo */
-  height: auto;      /* Alto automático */
-  overflow: visible; /* Permite que la imagen crezca en alto */
+  margin: 32px 0 0 0; /* Baja la foto respecto al título */
+  width: auto;
+  height: auto;
+  overflow: visible;
 }
 
 .fotoHamburguesa {
-  width: 100%;
+  width: 30vw;      /* 30% del ancho de la pantalla */
+  max-width: 220px; /* Limita el tamaño máximo si quieres */
   height: auto;
   object-fit: cover;
   border-radius: 16px;
