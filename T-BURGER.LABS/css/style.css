@@ -34,8 +34,8 @@ header {
 }
 
 .tipoHamburguesa {
+  display: grid;
   position: relative;
-  display: block;
   width: 100vw;
   height: auto;
   min-height: 200px;
@@ -48,12 +48,11 @@ header {
 }
 
 .tipoHamburguesa img {
+  grid-area: 1 / 1;
   width: 100vw;
   height: auto;
   object-fit: cover;
-  transition: filter 0.3s ease;
-  display: block;
-  opacity: 0.9;
+  z-index: 1;
 }
 
 h1 {
@@ -65,6 +64,27 @@ h1 {
   padding-top: 1vh;
 }
 
+.contenedorFotoHamburguesa {
+  grid-area: 1 / 1;
+  place-self: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+.precio {
+  color: #ffe6e6;
+  font-family: "REFont2";
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
 span {
   color: #bd1616;
   font-family: "REFont";
@@ -123,8 +143,8 @@ h2 {
   font-size: 40px;
   text-align: center;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.5); 
-  padding: 8px 24px;              
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 24px;
   border-radius: 12px;
 }
 
@@ -143,29 +163,16 @@ h2 {
   list-style: none;
   display: flex;
   flex-direction: column;
-}
-
-.fotoHamburguesa {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  max-width: 60vw;
-  height: auto;
-  object-fit: cover;
-  opacity: 0.8;
-  filter: brightness(120%);
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  padding-left: 0;
 }
 
 .ingrediente {
-  padding: 0;
-  margin: 0;
   color: #ffe6e6;
   font-family: "REFont";
   font-size: 24px;
   font-weight: lighter;
+  display: flex;
+  align-items: center;
 }
 
 .listaIngredientes li::before {
@@ -175,12 +182,68 @@ h2 {
   height: 24px;
   margin-right: 8px;
   vertical-align: middle;
-  background-image: url("../sources/imgs/UmbrellaIconSinFondo.png");
+  background-image: url('../sources/imgs/UmbrellaIconSinFondo.png'); /* Ajusta la ruta si es necesario */
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-/* TABLET: Cambios para pantallas medianas */
+.fotoHamburguesa {
+  width: 160px;
+  max-width: 60vw;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.9;
+  filter: brightness(120%);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  margin-bottom: 8px; /* Espacio entre la foto y los controles */
+}
+
+.infoCompra {
+  display: flex;
+  flex-direction: column;      /* Columna: precio arriba, controles abajo */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-top: 0;
+}
+
+.controlesCantidad {
+  display: flex;
+  flex-direction: row;         /* Fila: botones y cantidad en línea */
+  align-items: center;
+  gap: 8px;
+}
+
+.precio, .cantidad {
+  color: #ffe6e6;
+  font-family: "REFont2";
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.btn-restar,
+.btn-sumar {
+  background: #bd1616;
+  color: #ffe6e6;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0 4px;
+}
+
+.btn-restar:hover,
+.btn-sumar:hover {
+  background: #ff2626;
+}
+
 @media (min-width: 600px) {
   .galeria {
     flex-direction: row;
@@ -224,7 +287,6 @@ h2 {
     border-radius: 10px;
     transition: all 0.5s ease;
   }
-  
 }
 
 /* DESKTOP: Cambios para pantallas grandes */
@@ -246,11 +308,10 @@ h2 {
   .ingrediente {
     font-size: 30px;
   }
-  
+
   .tipoHamburguesa:hover {
     cursor: crosshair;
     width: 15vw;
-
   }
   .tipoHamburguesa:hover .textoTipoHamburguesa {
     opacity: 1;
