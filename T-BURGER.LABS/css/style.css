@@ -186,7 +186,7 @@ h2 {
   height: 24px;
   margin-right: 8px;
   vertical-align: middle;
-  background-image: url('../sources/imgs/UmbrellaIconSinFondo.png'); /* Ajusta la ruta si es necesario */
+  background-image: url('../sources/imgs/favicon.ico'); /* Ajusta la ruta si es necesario */
   background-size: contain;
   background-repeat: no-repeat;
 }
