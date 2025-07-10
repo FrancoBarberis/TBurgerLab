@@ -72,12 +72,15 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7); /* Más visible */
+  background: rgba(0, 0, 0, 0.7);
+  /* Más visible */
   padding: 24px 20px;
   margin-top: 8vh;
   border-radius: 18px;
-  width: fit-content;      /* Limita el ancho al contenido */
-  max-width: 90vw;         /* No se sale en mobile */
+  width: fit-content;
+  /* Limita el ancho al contenido */
+  max-width: 90vw;
+  /* No se sale en mobile */
   box-sizing: border-box;
   overflow: visible;
 }
@@ -89,6 +92,7 @@ h1 {
   font-weight: bold;
   margin-bottom: 4px;
 }
+
 span {
   color: #bd1616;
   font-family: "REFont";
@@ -116,6 +120,7 @@ h2 {
   flex-direction: column;
   padding: 20px;
 }
+
 .contenedorGaleria {
   padding-top: 2vh;
   padding-bottom: 50px;
@@ -160,6 +165,7 @@ h2 {
   left: 30%;
   bottom: 5%;
   width: 60vw;
+  max-width: max-content;
   z-index: 2;
   padding: 10px 20px;
   border-radius: 10px;
@@ -167,7 +173,9 @@ h2 {
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding-left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 24px;
+  border-radius: 12px;
 }
 
 .ingrediente {
@@ -186,7 +194,8 @@ h2 {
   height: 24px;
   margin-right: 8px;
   vertical-align: middle;
-  background-image: url('../sources/imgs/favicon.ico'); /* Ajusta la ruta si es necesario */
+  background-image: url('../sources/imgs/favicon.ico');
+  /* Ajusta la ruta si es necesario */
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -197,28 +206,29 @@ h2 {
   height: auto;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   display: block;
-  background: transparent; /* Asegura que no tenga fondo */
+  background: transparent;
+  /* Asegura que no tenga fondo */
 }
 
 .infoCompra {
   display: flex;
-  flex-direction: column;      /* Columna: precio arriba, controles abajo */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   margin-top: 0;
+  background-color: white;
 }
 
 .controlesCantidad {
   display: flex;
-  flex-direction: row;         /* Fila: botones y cantidad en línea */
+  flex-direction: row;
+  /* Fila: botones y cantidad en línea */
   align-items: center;
   gap: 8px;
 }
-
-.precio, .cantidad {
+.cantidad {
   color: #ffe6e6;
   font-family: "REFont2";
   font-size: 1.2em;
@@ -250,6 +260,7 @@ h2 {
     height: 80vh;
     width: 90vw;
   }
+
   .tipoHamburguesa {
     width: 0;
     height: 100%;
@@ -260,12 +271,14 @@ h2 {
     transition: 0.3s ease;
     cursor: pointer;
   }
+
   .galeria .tipoHamburguesa img {
     width: 0;
     height: auto;
     flex-grow: 1;
     transition: 0.3s ease;
   }
+
   .textoTipoHamburguesa {
     opacity: 0;
     visibility: hidden;
@@ -276,6 +289,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, 50%);
   }
+
   .listaIngredientes {
     opacity: 0;
     pointer-events: none;
@@ -294,44 +308,66 @@ h2 {
   .galeria {
     width: 80vw;
   }
+
   h1,
   span {
     font-size: 100px;
   }
+
   h2 {
     font-size: 80px;
   }
+
   .textoTipoHamburguesa {
     font-size: 80px;
+    top: -15%;
+    padding: 0;
   }
 
   .ingrediente {
     font-size: 30px;
   }
 
+  .infoCompra {
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+
+  .fotoHamburguesa {
+    display: block;
+    width: 30%;
+    height: auto;
+    object-fit: cover;
+  }
+
   .tipoHamburguesa:hover {
     cursor: crosshair;
     width: 15vw;
   }
+
   .tipoHamburguesa:hover .textoTipoHamburguesa {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translate(-50%, 0);
   }
+
   .tipoHamburguesa:hover .listaIngredientes {
     opacity: 1;
     pointer-events: auto;
   }
+
   .tipoHamburguesa:hover img {
     opacity: 1;
     filter: brightness(140%);
   }
 
-  .infoCompra {
-    display: none;
-    flex-direction: row; /* Fila: precio y controles en línea */
-    gap: 16px; /* Espacio entre precio y controles */
-    margin-top: 0; /* Sin margen superior */
+  .tipoHamburguesa:hover .infoCompra {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
+
+
 }
