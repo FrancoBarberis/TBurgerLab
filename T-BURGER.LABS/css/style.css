@@ -458,4 +458,48 @@ h2 {
     margin: 0;
     gap: 2px;
   }
+
+  .listaIngredientes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px; /* espacio entre filas y columnas */
+    align-items: center;
+    justify-items: start;
+    width: max-content;
+    padding: 12px 12px;
+    background: white;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 20%;
+    bottom: 2%;
+    z-index: 2;
+    transition: all 0.5s ease;
+    list-style: none;
+  }
+  .tipoHamburguesa:hover .listaIngredientes {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ingrediente {
+    color: #ffe6e6;
+    font-family: "REFont";
+    font-size: 30px;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  .listaIngredientes li::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-image: url('../sources/imgs/favicon.ico');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
