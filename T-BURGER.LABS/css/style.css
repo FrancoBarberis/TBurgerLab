@@ -88,9 +88,9 @@ h1 {
 }
 
 .precio {
-  color: #ffe6e6;
+  color: white;
   font-family: "REFont2";
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -203,28 +203,19 @@ h2 {
 }
 
 .fotoHamburguesa {
-  width: 30vw;
-  max-width: 220px;
+  width: 20%;
+  max-width: 150px;
   height: auto;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   display: block;
   background: transparent;
-  /* Asegura que no tenga fondo */
 }
 
-.infoCompra {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0;
-  background-color: white;
-  border-radius: 18px;
-  width: 20%;
+.tipoCarne{
+  font-size: 40px;
 }
-
 .seccionInfoCompra {
   display: flex;
   flex-direction: row;
@@ -236,13 +227,15 @@ h2 {
 }
 
 .infoCompra {
-  min-width: 120px;
-  flex: none;        /* ¡Clave! No crecen ni se enciman */
+  min-width: fit-content;
+  flex: none;      
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: rgba(51, 49, 49, 0.441);
+  padding: 5px;
+  border-radius: 20px;
 }
 
 .controlesCantidad {
@@ -455,15 +448,6 @@ h2 {
 
   .infoCompra span {
     font-size: 4vh;
-  }
-
-  .infoCompra .precio {
-    font-size: 2vh;
-    margin: 0;
-    padding: 0;
-    color: #ffe6e6;
-    font-family: "REFont2";
-    font-weight: bold;
   }
 
   .controlesCantidad {
