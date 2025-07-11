@@ -432,8 +432,11 @@ h2 {
     opacity: 1;
     pointer-events: none;
     transition: opacity 0.5s;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    background: transparent;
   }
-
 
   .infoCompra {
     display: flex;
@@ -570,5 +573,25 @@ h2 {
 
   .seccionInfoCompra {
     gap: 4vw;        /* Mucho menos espacio entre infoCompra */
+  }
+
+  .fotoHamburguesa {
+    width: 180px;
+    max-width: 220px;
+    min-width: 120px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    z-index: 3;
+  }
+  .tipoHamburguesa:hover .fotoHamburguesa {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
