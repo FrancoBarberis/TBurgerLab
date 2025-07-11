@@ -159,25 +159,27 @@ h2 {
 }
 
 .listaIngredientes {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  position: absolute;
-  left: 10%;
-  bottom: 1%;
-  width: fit-content;
-  z-index: 2;
-  border-radius: 10px;
-  transform: none;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
-  background: white;
-  padding: 8px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 32px;
+  align-items: center;
+  justify-items: start;
+  width: max-content;
+  max-width: fit-content;
+  padding: 12px 12px;
+  background: rgba(59, 56, 56, 0.302);
   border-radius: 12px;
-  height: 15%;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden; /* <-- Añade esto */
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: all 0.5s ease;
+  list-style: none;
+  height: auto; /* <-- Asegura que el grid no se deforme */
 }
 
 .ingrediente {
@@ -344,7 +346,13 @@ h2 {
   }
 
   .ingrediente {
-    font-size: 30px;
+    font-size: clamp(1.2rem, 10vw, 10vw); /* Mínimo 1.2rem, ideal 2vw, máximo 4vw */
+    color: #ffe6e6;
+    font-family: "REFont";
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    margin: 0;
   }
 
   .tipoHamburguesa {
@@ -353,7 +361,7 @@ h2 {
 
   .contenedorFotoHamburguesa {
     position: absolute;
-    top: 20%; /* Antes 50%, ahora más arriba */
+    top: 45%; /* Antes 50%, ahora más arriba */
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -371,7 +379,7 @@ h2 {
 
   .fotoHamburguesa {
     display: block;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     transition: opacity 0.5s;
   }
@@ -413,6 +421,7 @@ h2 {
   .tipoHamburguesa:hover .listaIngredientes {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible; /* <-- Añade esto */
   }
 
   .tipoHamburguesa:hover img {
@@ -461,29 +470,32 @@ h2 {
   }
 
   .listaIngredientes {
+    width: 380px;      /* Fijo: ajusta si lo ves muy grande/pequeño */
+    min-width: 380px;
+    max-width: 380px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px 32px; /* espacio entre filas y columnas */
+    gap: 8px 32px;
     align-items: center;
     justify-items: start;
-    width: max-content;
-    max-width: fit-content;
     padding: 12px 12px;
-    background: white;
+    background: rgba(59, 56, 56, 0.302);
     border-radius: 12px;
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
     position: absolute;
     left: 50%;
     bottom: 2%;
     transform: translateX(-50%);
     z-index: 2;
-    transition: all 0.5s ease;
+    transition: opacity 0.15s ease;
     list-style: none;
   }
   .tipoHamburguesa:hover .listaIngredientes {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
   }
   .ingrediente {
     color: #ffe6e6;
