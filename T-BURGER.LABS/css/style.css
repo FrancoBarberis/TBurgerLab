@@ -154,7 +154,7 @@ h2 {
   text-align: center;
   z-index: 3;
   background: rgba(0, 0, 0, 0.5);
-  padding: 8px 24px;
+  padding: 8px 8px;
   border-radius: 12px;
 }
 
@@ -165,7 +165,7 @@ h2 {
   position: absolute;
   left: 10%;
   bottom: 1%;
-  width: 60vw;
+  width: fit-content;
   z-index: 2;
   border-radius: 10px;
   transform: none;
@@ -173,8 +173,9 @@ h2 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 8px 24px;
+  align-content: space-around;
+  background: white;
+  padding: 8px 8px;
   border-radius: 12px;
   height: 15%;
 }
@@ -359,6 +360,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: auto;
     max-width: none;
     min-width: 0;
@@ -431,7 +433,6 @@ h2 {
   }
 
   .tipoHamburguesa:hover .fotoHamburguesa {
-    display: block;
     opacity: 1;
     pointer-events: auto;
   }
