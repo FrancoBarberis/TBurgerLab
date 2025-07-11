@@ -284,32 +284,46 @@ h2 {
 }
 
 /* Estilos básicos para los botones */
-.btn-confirmar, .btn-descartar {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  font-family: "REFont2", sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+.btn-confirmar,
+.btn-descartar {
+  display: inline-flex; /* Alinea el contenido horizontalmente */
+  align-items: center; /* Centra verticalmente el texto y el icono */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  gap: 20px; /* Espacio entre el texto y el icono */
+  width: auto; /* Ajusta el ancho según el contenido */
+  min-width: 60px; /* Ancho mínimo para que sea cuadrado */
+  height: 60px; /* Altura fija igual al ancho mínimo */
+  background-color: #27ae60; /* Verde para btn-confirmar */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  font-size: 16px; /* Tamaño del texto */
+  padding: 20px 20px; /* Elimina padding interno */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-confirmar {
-  background: #27ae60;
-  color: #fff;
-}
 
 .btn-confirmar:hover {
-  background: #219150;
+  background-color: #219150; /* Verde más oscuro al hacer hover */
 }
 
 .btn-descartar {
-  background: #bd1616;
-  color: #fff;
+  background-color: #bd1616; /* Rojo para btn-descartar */
 }
 
 .btn-descartar:hover {
-  background: #ff2626;
+  background-color: #ff2626; /* Rojo más claro al hacer hover */
+}
+
+.texto-boton {
+  font-family: "REFont2", sans-serif; /* Fuente específica */
+  font-size: 30px; /* Tamaño del texto */
+  font-weight: normal; /* Peso del texto */
+  color: #fff; /* Color del texto */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina padding */
+  display: inline-block; /* Asegura que el texto no se apile */
 }
 
 @media (min-width: 600px) {
