@@ -80,7 +80,7 @@ h1 {
   margin-top: 8vh;
   border-radius: 18px;
   width: fit-content;
-  height: 100%;
+  height: fit-content;
   /* No se sale en mobile */
   box-sizing: border-box;
   overflow: visible;
@@ -154,7 +154,7 @@ h2 {
   text-align: center;
   z-index: 3;
   background: rgba(0, 0, 0, 0.5);
-  padding: 8px 8px;
+  padding: 4px 4px;
   border-radius: 12px;
 }
 
@@ -339,7 +339,7 @@ h2 {
 
   .textoTipoHamburguesa {
     font-size: 80px;
-    top: -15%;
+    top: 5%;      /* Ajusta este valor según lo que necesites */
     padding: 0;
   }
 
@@ -353,7 +353,7 @@ h2 {
 
   .contenedorFotoHamburguesa {
     position: absolute;
-    top: 50%;
+    top: 20%; /* Antes 50%, ahora más arriba */
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -375,6 +375,7 @@ h2 {
     pointer-events: none;
     transition: opacity 0.5s;
   }
+
 
   .infoCompra {
     display: flex;
@@ -466,14 +467,16 @@ h2 {
     align-items: center;
     justify-items: start;
     width: max-content;
+    max-width: fit-content;
     padding: 12px 12px;
     background: white;
     border-radius: 12px;
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    left: 20%;
+    left: 50%;
     bottom: 2%;
+    transform: translateX(-50%);
     z-index: 2;
     transition: all 0.5s ease;
     list-style: none;
@@ -501,5 +504,10 @@ h2 {
     background-image: url('../sources/imgs/favicon.ico');
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  .seccionInfoCompra {
+    gap: 4px;        /* Mucho menos espacio entre infoCompra */
+    margin-top: 4px; /* Menos espacio arriba */
   }
 }
