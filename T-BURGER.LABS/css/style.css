@@ -22,10 +22,15 @@ body {
 }
 
 header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   background-color: black;
-  justify-content: space-between;
   width: 100%;
+}
+
+.acciones-header {
+  justify-self: center;
 }
 
 .galeria {
@@ -121,6 +126,14 @@ h2 {
   align-items: flex-end;
   flex-direction: column;
   padding: 10px;
+  padding-right: 3vw; /* Igual que el padding izquierdo de h1 */
+}
+
+.contacto h2 {
+  color: #ffe6e6;
+  font-family: "REFont";
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Mínimo 1.5rem, ideal 4vw, máximo 2.5rem */
+  font-weight: lighter;
 }
 
 .contenedorGaleria {
@@ -273,6 +286,43 @@ h2 {
   background: #ff2626;
 }
 
+/* Centra el bloque de botones en el header */
+.acciones-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos básicos para los botones */
+.btn-confirmar, .btn-descartar {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-family: "REFont2", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-confirmar {
+  background: #27ae60;
+  color: #fff;
+}
+
+.btn-confirmar:hover {
+  background: #219150;
+}
+
+.btn-descartar {
+  background: #bd1616;
+  color: #fff;
+}
+
+.btn-descartar:hover {
+  background: #ff2626;
+}
+
 @media (min-width: 600px) {
   .galeria {
     flex-direction: row;
@@ -341,8 +391,9 @@ h2 {
 
   .textoTipoHamburguesa {
     font-size: 80px;
-    top: 5%;      /* Ajusta este valor según lo que necesites */
+    top: 5%;
     padding: 0;
+    transition: all 0.4s cubic-bezier(.4,0,.2,1); /* Más rápida y suave */
   }
 
   .ingrediente {
@@ -457,7 +508,7 @@ h2 {
     margin-top: -12px; /* Sube los botones, ajusta el valor según lo que necesites */
   }
 
-  .infoCompra span {
+  .infoCompra .tipoCarne {
     font-size: 4vh;
   }
 
@@ -470,9 +521,9 @@ h2 {
   }
 
   .listaIngredientes {
-    width: 380px;      /* Fijo: ajusta si lo ves muy grande/pequeño */
-    min-width: 380px;
-    max-width: 380px;
+    width: clamp(240px, 35vw, 420px); /* Mínimo 240px, ideal 35vw, máximo 420px */
+    min-width: unset;
+    max-width: unset;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px 32px;
@@ -489,7 +540,7 @@ h2 {
     bottom: 2%;
     transform: translateX(-50%);
     z-index: 2;
-    transition: opacity 0.15s ease;
+    transition: opacity .7s ease;
     list-style: none;
   }
   .tipoHamburguesa:hover .listaIngredientes {
