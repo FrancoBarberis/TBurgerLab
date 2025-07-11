@@ -397,7 +397,11 @@ h2 {
     transition: opacity 0.5s;
     background: rgba(30,30,30,0.85);
     border-radius: 18px;
-    padding: 10px 8px; /* Menos padding */
+    padding: 10px !important;
+    gap: 2px; /* Menos espacio entre hijos */
+    width: 180px;
+    min-width: 120px;
+    max-width: 220px;
   }
 
   .tipoHamburguesa:hover {
@@ -432,9 +436,9 @@ h2 {
 
   .fotoHamburguesa,
   .infoCompra {
-    display: none;
     opacity: 0;
     pointer-events: none;
+    /* NO uses display: none aquí */
   }
 
   .tipoHamburguesa:hover .fotoHamburguesa {
@@ -455,5 +459,92 @@ h2 {
 
   .infoCompra span {
     font-size: 2.5vw;
+  }
+
+  .infoCompra {
+    /* Fade in lento (0.5s), fade out rápido (0.2s) */
+    transition: opacity 0.5s cubic-bezier(.4,0,.2,1), opacity 0.2s cubic-bezier(.4,0,1,1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(30,30,30,0.85);
+    border-radius: 12px;
+    padding: 10px 8px;      /* 10px arriba y abajo, 8px a los lados */
+    gap: 2px;
+    width: auto;            /* Se ajusta al contenido */
+    min-width: 80px;
+    max-width: 220px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+
+  .tipoHamburguesa:hover .infoCompra {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .infoCompra .precio {
+    font-size: 1.2vw;
+    margin: 0;
+    padding: 0;
+    color: #ffe6e6;
+    font-family: "REFont2";
+    font-weight: bold;
+  }
+
+  .controlesCantidad {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    gap: 2px;
+  }
+
+  .cantidad {
+    margin: 0;
+    padding: 0;
+    color: #ffe6e6;
+    font-family: "REFont2";
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .btn-restar,
+  .btn-sumar {
+    background: #bd1616;
+    color: #ffe6e6;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 0 1px;
+    padding: 0;
+  }
+
+  .btn-restar:hover,
+  .btn-sumar:hover {
+    background: #ff2626;
+  }
+
+  .btn-comprar {
+    margin: 0;
+    padding: 2px 6px;
+    font-size: 1em;
+    background: #bd1616;
+    color: #ffe6e6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-comprar:hover {
+    background: #ff2626;
   }
 }
