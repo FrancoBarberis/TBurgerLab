@@ -238,8 +238,7 @@ h2 {
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  gap: 16px; /* Espacio entre los infoCompra */
-  margin-top: 12px;
+  gap: 20px;
 }
 
 .infoCompra {
@@ -412,7 +411,7 @@ h2 {
 
   .contenedorFotoHamburguesa {
     position: absolute;
-    top: 45%; /* Antes 50%, ahora más arriba */
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -446,7 +445,7 @@ h2 {
     transition: opacity 0.5s;
     background: rgba(30,30,30,0.85);
     border-radius: 12px;
-    padding: 4px 6px;   /* Mucho menos padding */
+    padding: 4px 6px;   
     gap: 2px;
     width: 150px;
     min-width: 80px;
@@ -530,7 +529,7 @@ h2 {
     align-items: center;
     justify-items: start;
     padding: 12px 12px;
-    background: rgba(59, 56, 56, 0.302);
+    background: rgba(30,30,30,0.85); /* Igual que infoCompra */
     border-radius: 12px;
     opacity: 0;
     pointer-events: none;
@@ -570,7 +569,6 @@ h2 {
   }
 
   .seccionInfoCompra {
-    gap: 4px;        /* Mucho menos espacio entre infoCompra */
-    margin-top: 4px; /* Menos espacio arriba */
+    gap: 4vw;        /* Mucho menos espacio entre infoCompra */
   }
 }
