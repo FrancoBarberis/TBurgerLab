@@ -9,6 +9,7 @@ https://colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 body {
   background-color: #000000;
   width: 100%;
+  margin-top: 15vh; /* Ajusta el top para que no se superponga al header */
 }
 
 @font-face {
@@ -22,15 +23,34 @@ body {
 }
 
 header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
+  display: grid; /* Usa CSS Grid */
+  grid-template-rows: auto auto; /* Dos filas: una para el título y otra para los botones */
+  grid-template-columns: 1fr; /* Una columna que ocupa todo el ancho */
+  align-items: start; /* Alinea los elementos al inicio verticalmente */
+  justify-items: center; /* Centra los elementos horizontalmente */
   background-color: black;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 16px; /* Espaciado interno */
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 4rem); /* Tamaño responsive */
+  color: #ffe6e6;
+  font-family: "REFont";
+  font-weight: lighter;
+  text-align: left; /* Alinea el texto dentro del título hacia la izquierda */
+  justify-self: start; /* Alinea el título hacia la izquierda */
+  margin-bottom: 16px; /* Espacio entre el título y los botones */
 }
 
 .acciones-header {
-  justify-self: center;
+  display: flex; /* Alinea los botones horizontalmente */
+  gap: 16px; /* Espacio entre botones */
+  justify-content: center; /* Centra los botones horizontalmente */
 }
 
 .galeria {
@@ -65,7 +85,7 @@ header {
 h1 {
   color: #ffe6e6;
   font-family: "REFont";
-  font-size: 60px;
+  font-size: 4rem;
   font-weight: lighter;
   padding-left: 3vw;
   padding-top: 1vh;
@@ -95,8 +115,9 @@ h1 {
 span {
   color: #bd1616;
   font-family: "REFont";
-  font-size: 60px;
+  font-size: 5rem;
   font-weight: lighter;
+  z-index: 3;
 }
 
 h2 {
@@ -270,6 +291,8 @@ h2 {
   margin: 0 4px;
 }
 
+
+
 .btn-restar:hover,
 .btn-sumar:hover {
   background: #ff2626;
@@ -289,7 +312,7 @@ h2 {
   display: inline-flex; /* Alinea el contenido horizontalmente */
   align-items: center; /* Centra verticalmente el texto y el icono */
   justify-content: center; /* Centra horizontalmente el contenido */
-  gap: 20px; /* Espacio entre el texto y el icono */
+  gap: 8px; /* Espacio entre el texto y el icono */
   width: auto; /* Ajusta el ancho según el contenido */
   min-width: 60px; /* Ancho mínimo para que sea cuadrado */
   height: 60px; /* Altura fija igual al ancho mínimo */
@@ -299,14 +322,12 @@ h2 {
   border-radius: 8px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar el mouse */
   font-size: 16px; /* Tamaño del texto */
-  padding: 20px 20px; /* Elimina padding interno */
+  padding: 0 12px; /* Espaciado interno */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
 .btn-confirmar:hover {
   background-color: #219150; /* Verde más oscuro al hacer hover */
-  transform: scale(1.05); /* Efecto de zoom al hacer hover */
 }
 
 .btn-descartar {
@@ -315,9 +336,7 @@ h2 {
 
 .btn-descartar:hover {
   background-color: #ff2626; /* Rojo más claro al hacer hover */
-  transform: scale(1.05); /* Efecto de zoom al hacer hover */
 }
-
 .texto-boton {
   font-family: "REFont", sans-serif; /* Fuente específica */
   font-size: 30px; /* Tamaño del texto */
@@ -379,6 +398,12 @@ h2 {
 
 /* DESKTOP: Cambios para pantallas grandes */
 @media (min-width: 1024px) {
+  body {
+    background-color: #000000;
+    width: 100%;
+    margin-top: 13vh; /* Ajusta el top para que no se superponga al header */
+  }
+  
   .galeria {
     display: flex;
     width: 80vw;
@@ -387,7 +412,11 @@ h2 {
 
   h1,
   span {
-    font-size: 100px;
+    font-size: 5rem;
+  }
+
+  .btn-confirmar .texto-boton {
+    display: inline-block; /* Oculta el texto en pantallas pequeñas */
   }
 
   h2 {
