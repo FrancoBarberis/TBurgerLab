@@ -177,52 +177,6 @@ h2 {
   padding: 4px 4px;
 }
 
-.listaIngredientes {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 32px;
-  align-items: center;
-  justify-items: start;
-  width: 80%;
-  padding: 12px 12px;
-  background: rgba(59, 56, 56, 0.302);
-  border-radius: 12px;
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  position: absolute;
-  left: 50%;
-  bottom: 2%;
-  transform: translateX(-50%);
-  z-index: 2;
-  transition: all 0.5s ease;
-  list-style: none;
-  height: auto; /* <-- Asegura que el grid no se deforme */
-}
-
-.ingrediente {
-  color: #ffe6e6;
-  font-family: "REFont";
-  font-size: 24px;
-  font-weight: lighter;
-  display: flex;
-  align-items: center;
-  margin: auto;
-}
-
-.listaIngredientes li::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  vertical-align: middle;
-  background-image: url('../sources/imgs/favicon.ico');
-  /* Ajusta la ruta si es necesario */
-  background-size: contain;
-  background-repeat: no-repeat;
-}
 
 .fotoHamburguesa {
   width: 55%;
@@ -242,7 +196,7 @@ h2 {
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  margin-top: 5%;
+  top: 20%;
 }
 
 .infoCompra {
@@ -378,17 +332,6 @@ h2 {
     transform: translate(-50%, 50%);
   }
 
-  .listaIngredientes {
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    left: 20%;
-    bottom: 5%;
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-  }
 }
 
 /* DESKTOP: Cambios para pantallas grandes */
@@ -460,15 +403,6 @@ h2 {
     transition: all 0.4s cubic-bezier(.4,0,.2,1); /* Más rápida y suave */
   }
 
-  .ingrediente {
-    font-size: clamp(1.2rem, 10vw, 10vw); /* Mínimo 1.2rem, ideal 2vw, máximo 4vw */
-    color: #ffe6e6;
-    font-family: "REFont";
-    font-weight: lighter;
-    display: flex;
-    align-items: center;
-    margin: 0;
-  }
 
   .tipoHamburguesa {
     position: relative;
@@ -477,18 +411,17 @@ h2 {
   .contenedorFotoHamburguesa {
     margin-top: 0;
     position: absolute;
-    top: 49%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
     padding: 0;
     background: none;
-    height: fit-content;
   }
 
   .infoCompra {
@@ -524,12 +457,6 @@ h2 {
     transform: translate(-50%, 0);
   }
 
-  .tipoHamburguesa:hover .listaIngredientes {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible; /* <-- Añade esto */
-  }
-
   .tipoHamburguesa:hover .fotoPersonaje {
     opacity: 1;
     filter: brightness(140%);
@@ -557,62 +484,13 @@ h2 {
     gap: 2px;
   }
 
-  .listaIngredientes {
-    width: clamp(240px, 35vw, 420px); /* Mínimo 240px, ideal 35vw, máximo 420px */
-    min-width: unset;
-    max-width: unset;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 32px;
-    align-items: center;
-    justify-items: start;
-    padding: 12px 12px;
-    background: rgba(30,30,30,0.85); /* Igual que infoCompra */
-    border-radius: 12px;
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-    position: absolute;
-    left: 50%;
-    bottom: 2%;
-    transform: translateX(-50%);
-    z-index: 2;
-    transition: opacity .7s ease;
-    list-style: none;
-    max-height: 15%;
-  }
-  .tipoHamburguesa:hover .listaIngredientes {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-  }
-  .ingrediente {
-    color: #ffe6e6;
-    font-family: "REFont";
-    font-size: 30px;
-    font-weight: lighter;
-    display: flex;
-    align-items: center;
-    margin: 0;
-  }
-  .listaIngredientes li::before {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-    vertical-align: middle;
-    background-image: url('../sources/imgs/favicon.ico');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
 
   .seccionInfoCompra {
     gap: 4vw;        /* Mucho menos espacio entre infoCompra */
   }
 
   .fotoHamburguesa {
-    width: clamp(120px, 30vw, 260px);
+    width: clamp(120px, 30vw, 350px);
     height: auto;
     display: block;
     object-fit: contain;
@@ -622,6 +500,7 @@ h2 {
     pointer-events: none;
     transition: opacity 0.5s;
     z-index: 3;
+    margin-bottom: 10%;
   }
   .tipoHamburguesa:hover .fotoHamburguesa {
     opacity: 1;
