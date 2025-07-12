@@ -79,6 +79,29 @@ header {
   z-index: 1;
 }
 
+.btn-desplegarLista {
+  position: absolute; /* Posiciona el botón dentro de .tipoHamburguesa */
+  top: 35px; /* Espacio desde la parte superior */
+  right: 8px; /* Espacio desde la parte derecha */
+  background-color: white; /* Color blanco */
+  color: red; /* Color del icono rojo */
+  border: none; /* Sin bordes */
+  border-radius: 10%; /* Forma circular */
+  width: 40px; /* Tamaño del botón */
+  height: 40px; /* Tamaño del botón */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra */
+  z-index: 3; /* Asegura que esté por encima de otros elementos */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-desplegarLista:hover {
+  background-color: #219150; /* Verde más oscuro al hacer hover */
+  transform: scale(1.1); /* Efecto de agrandamiento */
+}
 
 span {
   color: #bd1616;
@@ -202,12 +225,10 @@ h2 {
 }
 
 .fotoHamburguesa {
-  max-height: 430px;
   width: 55%;
+  max-height: 430px;
   height: auto;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   display: block;
   background: transparent;
 }
@@ -376,6 +397,10 @@ h2 {
     margin-top: 13vh; /* Ajusta el top para que no se superponga al header */
   }
   
+  .btn-desplegarLista {
+    display: none; /* Oculta el botón en pantallas grandes */
+  }
+
   .galeria {
     display: flex;
     width: 80vw;
