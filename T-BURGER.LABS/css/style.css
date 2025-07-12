@@ -155,19 +155,19 @@ h2 {
 }
 
 .listaIngredientes {
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px 32px;
   align-items: center;
   justify-items: start;
-  width: max-content;
-  max-width: fit-content;
+  width: 80%;
   padding: 12px 12px;
   background: rgba(59, 56, 56, 0.302);
   border-radius: 12px;
   opacity: 1;
   pointer-events: none;
-  visibility: visible
+  visibility: visible;
   position: absolute;
   left: 50%;
   bottom: 2%;
