@@ -321,6 +321,7 @@ h2 {
 
 .btn-confirmar:hover {
   background-color: #219150; /* Verde más oscuro al hacer hover */
+  transform: scale(1.1);
 }
 
 .btn-descartar {
@@ -329,6 +330,7 @@ h2 {
 
 .btn-descartar:hover {
   background-color: #ff2626; /* Rojo más claro al hacer hover */
+  transform: scale(1.1);
 }
 .texto-boton {
   font-family: "REFont", sans-serif; /* Fuente específica */
@@ -394,7 +396,7 @@ h2 {
   body {
     background-color: #000000;
     width: 100%;
-    margin-top: 20vh; /* Ajusta el top para que no se superponga al header */
+    margin-top: 12vh; /* Ajusta el top para que no se superponga al header */
   }
   
   header {
