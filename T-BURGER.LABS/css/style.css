@@ -9,7 +9,7 @@ https://colorhunt.co/palette/ffe6e6ff2626bd1616000000 */
 body {
   background-color: #000000;
   width: 100%;
-  margin-top: 15vh; /* Ajusta el top para que no se superponga al header */
+  margin-top: 15vh;
 }
 
 @font-face {
@@ -34,23 +34,20 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
-  padding: 16px; /* Espaciado interno */
 }
 
-.title {
-  font-size: clamp(2rem, 5vw, 4rem); /* Tamaño responsive */
-  color: #ffe6e6;
-  font-family: "REFont";
-  font-weight: lighter;
-  text-align: left; /* Alinea el texto dentro del título hacia la izquierda */
-  justify-self: start; /* Alinea el título hacia la izquierda */
-  margin-bottom: 16px; /* Espacio entre el título y los botones */
+.contenedorTitulo {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centra el título horizontalmente */
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-
 .acciones-header {
   display: flex; /* Alinea los botones horizontalmente */
-  gap: 16px; /* Espacio entre botones */
-  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; 
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .galeria {
@@ -82,13 +79,20 @@ header {
   z-index: 1;
 }
 
+
+span {
+  color: #bd1616;
+  font-family: "REFont";
+  font-size: 5rem;
+  font-weight: lighter;
+  z-index: 3;
+}
+
 h1 {
   color: #ffe6e6;
   font-family: "REFont";
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: lighter;
-  padding-left: 3vw;
-  padding-top: 1vh;
 }
 
 .contenedorFotoHamburguesa {
@@ -112,13 +116,6 @@ h1 {
   margin-bottom: 4px;
 }
 
-span {
-  color: #bd1616;
-  font-family: "REFont";
-  font-size: 5rem;
-  font-weight: lighter;
-  z-index: 3;
-}
 
 h2 {
   color: #ffe6e6;
@@ -128,26 +125,6 @@ h2 {
   font-weight: lighter;
 }
 
-.iconoWSP {
-  width: 50px;
-  height: 50px;
-}
-
-.contacto {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 10px;
-  padding-right: 3vw; /* Igual que el padding izquierdo de h1 */
-}
-
-.contacto h2 {
-  color: #ffe6e6;
-  font-family: "REFont";
-  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Mínimo 1.5rem, ideal 4vw, máximo 2.5rem */
-  font-weight: lighter;
-}
 
 .contenedorGaleria {
   padding-top: 2vh;
@@ -156,13 +133,6 @@ h2 {
   justify-content: center;
 }
 
-.telefono {
-  padding: 0;
-  color: #bd1616;
-  font-family: "REFont2";
-  font-size: 30px;
-  font-weight: bold;
-}
 
 .textoTipoHamburguesa {
   opacity: 1;
