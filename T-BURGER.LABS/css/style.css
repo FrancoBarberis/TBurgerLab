@@ -224,7 +224,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(51, 49, 49, 0.441);
+  background-color: rgba;
   padding: 5px;
   border-radius: 20px;
 }
@@ -375,7 +375,7 @@ h2 {
   }
 
   .listaIngredientes {
-    top: 0;
+    top: -5%;
     opacity: 0;
     transition: all 0.3s ease; /* Transición más rápida */
     visibility: hidden; /* Oculta el texto por defecto */
