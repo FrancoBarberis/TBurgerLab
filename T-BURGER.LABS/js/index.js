@@ -1,3 +1,35 @@
+import { obtenerPrecios } from "./firebase.js";
+
+// Función para cargar precios desde Firebase y asociarlos con el DOM
+const cargarPreciosEnDOM = async () => {
+  const precios = await obtenerPrecios(); // Obtiene los precios desde Firebase
+
+  if (precios) {
+    // Recorre cada hamburguesa en la estructura de precios
+    Object.keys(precios).forEach((textoTipoHamburguesa) => {
+      // Recorre cada tipo de carne dentro de la hamburguesa
+      Object.keys(precios[textoTipoHamburguesa]).forEach((tipoCarne) => {
+        // Genera el ID del elemento en el DOM basado en textoTipoHamburguesa y tipoCarne
+        const idElemento = `${textoTipoHamburguesa}-${tipoCarne}`.replace(/\s+/g, "-").toLowerCase();
+
+        // Busca el elemento en el DOM usando el ID generado
+        const elementoPrecio = document.getElementById(idElemento);
+
+        // Si el elemento existe en el DOM, actualiza su contenido con el precio correspondiente
+        if (elementoPrecio) {
+          elementoPrecio.textContent = `$${precios[textoTipoHamburguesa][tipoCarne].toFixed(2)}`;
+        } else {
+          // Si el elemento no se encuentra, muestra un mensaje de advertencia en la consola
+          console.warn(`Elemento con ID "${idElemento}" no encontrado en el DOM.`);
+        }
+      });
+    });
+  } else {
+    // Si no se pudieron obtener los precios, muestra un mensaje de error en la consola
+    console.error("No se pudieron cargar los precios desde Firebase.");
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const botonesSumar = document.querySelectorAll(".btn-sumar");
   const botonesRestar = document.querySelectorAll(".btn-restar");
@@ -98,6 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("No has seleccionado ningún producto.");
     }
   });
+
+  cargarPreciosEnDOM(); // Llama a la función para cargar precios al iniciar
 });
 
 window.onload = () => {
