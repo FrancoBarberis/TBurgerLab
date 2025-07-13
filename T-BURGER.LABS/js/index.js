@@ -70,31 +70,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (hayProductos) {
-      // Solicita la dirección de envío
       const direccion = prompt("Por favor, ingresa tu dirección de envío:");
 
-      // Verifica que se haya ingresado una dirección
       if (direccion && /^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
-        // Dirección válida
-
-        // Número de WhatsApp al que se enviará el mensaje
         const numeroWhatsApp = "5491171545860";
-
-        // Mensaje que se enviará
         const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
         try {
-          const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+          // Intentar abrir WhatsApp
           window.open(urlWhatsApp, "_blank");
         } catch (error) {
-          alert("Ocurrió un error al intentar redirigir a WhatsApp.");
+          alert("Ocurrió un error al intentar redirigir a WhatsApp. Haz clic en el enlace generado.");
           console.error(error);
+
+          // Crear un enlace dinámico en el DOM
+          const enlaceWhatsApp = document.createElement("a");
+          enlaceWhatsApp.href = urlWhatsApp;
+          enlaceWhatsApp.target = "_blank";
+          enlaceWhatsApp.textContent = "Haz clic aquí para confirmar tu pedido en WhatsApp";
+          document.body.appendChild(enlaceWhatsApp);
         }
       } else {
         alert("Por favor, ingresa una dirección válida.");
       }
     } else {
-      alert("No has seleccionado ningún producto."); // Muestra un mensaje si no hay productos seleccionados
+      alert("No has seleccionado ningún producto.");
     }
   });
 });
