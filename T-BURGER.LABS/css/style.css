@@ -416,6 +416,10 @@ h2 {
     margin-top: 2vh;
   }
 
+  .contenedorGaleria {
+    padding: 0;
+  }
+
   .listaIngredientes {
     top: 0;
     opacity: 0;
