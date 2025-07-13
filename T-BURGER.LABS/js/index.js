@@ -56,8 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Obtiene el tipo de carne (asume que está en un elemento hermano con clase .tipoCarne)
         const tipoCarne = cantidad.closest(".infoCompra").querySelector(".tipoCarne").textContent;
 
-        // Agrega la hamburguesa, el tipo de carne y su cantidad al mensaje
-        mensajeHamburguesas += `${tipoHamburguesa} (${tipoCarne}): ${cantidadNumerica}\n`;
+        const sanitize = (str) => str.replace(/[^a-zA-Z0-9\s]/g, "");
+        const tipoHamburguesaSanitizado = sanitize(tipoHamburguesa);
+        const tipoCarneSanitizado = sanitize(tipoCarne);
+
+        if (tipoHamburguesa && tipoCarne && cantidadNumerica > 0) {
+          // Agrega la hamburguesa, el tipo de carne y su cantidad al mensaje
+          mensajeHamburguesas += `${tipoHamburguesa} (${tipoCarne})x ${cantidadNumerica}\n`;
+        } else {
+          console.error("Datos inválidos detectados en el DOM.");
+        }
       }
     });
 
@@ -66,18 +74,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const direccion = prompt("Por favor, ingresa tu dirección de envío:");
 
       // Verifica que se haya ingresado una dirección
-      if (direccion && direccion.trim() !== "") {
+      if (direccion && /^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
+        // Dirección válida
+
         // Número de WhatsApp al que se enviará el mensaje
         const numeroWhatsApp = "5491171545860";
 
         // Mensaje que se enviará
-        const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas seleccionadas:\n${mensajeHamburguesas}`;
+        const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
 
-        // Redirige a WhatsApp con el mensaje
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        window.open(urlWhatsApp, "_blank"); // Abre WhatsApp en una nueva pestaña
+        try {
+          const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+          window.open(urlWhatsApp, "_blank");
+        } catch (error) {
+          alert("Ocurrió un error al intentar redirigir a WhatsApp.");
+          console.error(error);
+        }
       } else {
-        alert("No ingresaste una dirección válida."); // Muestra un mensaje si no se ingresó una dirección
+        alert("Por favor, ingresa una dirección válida.");
       }
     } else {
       alert("No has seleccionado ningún producto."); // Muestra un mensaje si no hay productos seleccionados
