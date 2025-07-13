@@ -53,26 +53,28 @@ header {
 .listaIngredientes {
   color: #ffe6e6;
   font-family: "REFont";
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: lighter;
   margin-top: 10px;
   text-align: center; /* Centra el texto */
   width: 100%;
-  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: fit-content;
   position: absolute; /* Posiciona el texto sobre la imagen */
+  top: -27%;
 }
 
 .galeria {
   display: flex;
   flex-direction: column;
   height: auto;
-  width: 100vw;
+  width: 100%;
 }
 
 .tipoHamburguesa {
   display: grid;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: auto;
   min-height: 200px;
   margin-bottom: 20px;
@@ -85,7 +87,7 @@ header {
 
 .tipoHamburguesa .fotoPersonaje {
   grid-area: 1 / 1;
-  width: 100vw;
+  width: 100%;
   height: auto;
   object-fit: cover;
   z-index: 1;
@@ -198,8 +200,8 @@ h2 {
   display: block;
   background: transparent;
   margin-bottom: 10%;
-  border-radius: 35%;
-  background-color: rgba(51, 49, 49, 0.441);
+  border-radius: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 10px;
 }
 
@@ -373,7 +375,11 @@ h2 {
   }
 
   .listaIngredientes {
+    top: 0;
     opacity: 0;
+    transition: all 0.3s ease; /* Transición más rápida */
+    visibility: hidden; /* Oculta el texto por defecto */
+    width: fit-content;
   }
 
   .acciones-header {
@@ -452,7 +458,7 @@ h2 {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s;
-    background: rgba(30,30,30,0.85);
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 12px;
     padding: 4px 6px;   
     gap: 2px;
@@ -478,7 +484,10 @@ h2 {
   }
 
   .tipoHamburguesa:hover .listaIngredientes {
-    opacity: 0.5;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .tipoHamburguesa:hover .fotoPersonaje {
@@ -509,12 +518,9 @@ h2 {
   }
 
 
-  .seccionInfoCompra {
-    gap: 4vw;        /* Mucho menos espacio entre infoCompra */
-  }
 
   .fotoHamburguesa {
-    width: clamp(200px, 23vw, 320px);
+    width: clamp(200px, 23vw, 250px);
     height: auto;
     display: block;
     object-fit: contain;
