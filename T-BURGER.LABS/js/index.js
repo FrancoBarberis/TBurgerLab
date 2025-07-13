@@ -50,34 +50,28 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cantidadNumerica > 0) {
         hayProductos = true; // Marca que hay al menos un producto seleccionado
 
-        // Obtiene el nombre de la hamburguesa (asume que está en un elemento hermano con clase .tipoHamburguesa)
         const tipoHamburguesa = cantidad.closest(".tipoHamburguesa").querySelector(".textoTipoHamburguesa").textContent;
-
-        // Obtiene el tipo de carne (asume que está en un elemento hermano con clase .tipoCarne)
         const tipoCarne = cantidad.closest(".infoCompra").querySelector(".tipoCarne").textContent;
 
-        const sanitize = (str) => str.replace(/[^a-zA-Z0-9\s]/g, "");
-        const tipoHamburguesaSanitizado = sanitize(tipoHamburguesa);
-        const tipoCarneSanitizado = sanitize(tipoCarne);
-
-        if (tipoHamburguesa && tipoCarne && cantidadNumerica > 0) {
-          // Agrega la hamburguesa, el tipo de carne y su cantidad al mensaje
-          mensajeHamburguesas += `${tipoHamburguesa} (${tipoCarne})x ${cantidadNumerica}\n`;
-        } else {
-          console.error("Datos inválidos detectados en el DOM.");
-        }
+        mensajeHamburguesas += `${tipoHamburguesa} (${tipoCarne})x ${cantidadNumerica}\n`;
       }
     });
 
     if (hayProductos) {
       let direccion = null;
 
-      // Solicita la dirección hasta que sea válida
+      // Solicita la dirección hasta que sea válida o el usuario cancele
       while (!direccion || !/^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
-        if (direccion !== null) {
+        direccion = prompt("Por favor, ingresa tu dirección de envío:");
+
+        if (direccion === null) {
+          alert("Has cancelado la solicitud de dirección.");
+          return; // Rompe el flujo y no continúa con el pedido
+        }
+
+        if (!/^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
           alert("Por favor, ingresa una dirección válida.");
         }
-        direccion = prompt("Por favor, ingresa tu dirección de envío:");
       }
 
       const numeroWhatsApp = "5491171545860";
@@ -88,51 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Intentar abrir WhatsApp
         window.open(urlWhatsApp, "_blank");
       } catch (error) {
-        alert("Ocurrió un error al intentar redirigir a WhatsApp.");
+        alert("Ocurrió un error al intentar redirigir a WhatsApp. Haz clic en el enlace generado.");
         console.error(error);
-
-        // Crear un pop-up dinámico
-        const modal = document.createElement("div");
-        modal.style.position = "fixed";
-        modal.style.top = "50%";
-        modal.style.left = "50%";
-        modal.style.transform = "translate(-50%, -50%)";
-        modal.style.backgroundColor = "#fff";
-        modal.style.padding = "20px";
-        modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-        modal.style.borderRadius = "8px";
-        modal.style.zIndex = "1000";
-
-        const mensajeError = document.createElement("p");
-        mensajeError.textContent = "Haz clic en el enlace para confirmar tu pedido en WhatsApp:";
-        mensajeError.style.marginBottom = "10px";
 
         const enlaceWhatsApp = document.createElement("a");
         enlaceWhatsApp.href = urlWhatsApp;
         enlaceWhatsApp.target = "_blank";
-        enlaceWhatsApp.textContent = "Abrir WhatsApp";
-        enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
-        enlaceWhatsApp.style.textDecoration = "none";
-        enlaceWhatsApp.style.fontWeight = "bold";
-
-        const botonCerrar = document.createElement("button");
-        botonCerrar.textContent = "Cerrar";
-        botonCerrar.style.marginTop = "10px";
-        botonCerrar.style.padding = "5px 10px";
-        botonCerrar.style.cursor = "pointer";
-        botonCerrar.style.backgroundColor = "#f44336";
-        botonCerrar.style.color = "#fff";
-        botonCerrar.style.border = "none";
-        botonCerrar.style.borderRadius = "4px";
-
-        botonCerrar.addEventListener("click", () => {
-          document.body.removeChild(modal); // Elimina el pop-up
-        });
-
-        modal.appendChild(mensajeError);
-        modal.appendChild(enlaceWhatsApp);
-        modal.appendChild(botonCerrar);
-        document.body.appendChild(modal);
+        enlaceWhatsApp.textContent = "Haz clic aquí para confirmar tu pedido en WhatsApp";
+        document.body.appendChild(enlaceWhatsApp);
       }
     } else {
       alert("No has seleccionado ningún producto.");
