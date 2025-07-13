@@ -10,6 +10,7 @@ body {
   background-color: #000000;
   width: 100%;
   margin-top: 22vh;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -317,7 +318,47 @@ h2 {
   display: inline-block; /* Asegura que el texto no se apile */
 }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) and (max-width: 1023px) {
+  /* .galeria {
+    flex-direction: row;
+    height: 80vh;
+    width: 90vw;
+  }
+
+  .tipoHamburguesa {
+    width: 0;
+    height: 100%;
+    min-height: unset;
+    flex-grow: 1;
+    margin-bottom: 0;
+    display: flex;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .galeria .tipoHamburguesa .fotoPersonaje {
+    width: 0;
+    height: auto;
+    flex-grow: 1;
+    transition: 0.3s ease;
+  }
+
+  .textoTipoHamburguesa {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    font-size: 60px;
+    transition: all 0.7s ease;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  } */
+
+}
+
+/* DESKTOP: Cambios para pantallas grandes */
+@media (min-width: 1024px) {
+  /* REVISAR */
   .galeria {
     flex-direction: row;
     height: 80vh;
@@ -352,11 +393,9 @@ h2 {
     left: 50%;
     transform: translate(-50%, 50%);
   }
-
-}
-
-/* DESKTOP: Cambios para pantallas grandes */
-@media (min-width: 1024px) {
+  
+  
+  
   body {
     background-color: #000000;
     width: 100%;
