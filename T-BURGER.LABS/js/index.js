@@ -1,3 +1,16 @@
+const loadingSpinner = document.getElementById('loadingSpinner');
+
+function showSpinner(){
+  loadingSpinner.classList.add('show');
+}
+
+function hideSpinner(){
+  loadingSpinner.classList.remove('show');
+}
+
+
+showSpinner();
+
 document.addEventListener("DOMContentLoaded", () => {
   const botonesSumar = document.querySelectorAll(".btn-sumar");
   const botonesRestar = document.querySelectorAll(".btn-restar");
@@ -97,6 +110,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-window.onload = () => {
-  document.body.style.visibility = "visible"; // Muestra el contenido
-};
+hideSpinner();
