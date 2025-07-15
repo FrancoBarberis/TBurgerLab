@@ -74,35 +74,43 @@ document.addEventListener("DOMContentLoaded", () => {
       let direccion = null;
 
       // Solicita la dirección hasta que sea válida o el usuario cancele
-      while (!direccion || !/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.-]+$/.test(direccion.trim())) {
+      while (!direccion || !/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion.trim())) {
         direccion = prompt("Por favor, ingresa tu dirección de envío:");
 
         if (direccion === null) {
           alert("Has cancelado la solicitud de dirección.");
-          return; // Rompe el flujo y no continúa con el pedido
+          return; // Detiene el proceso de confirmación, pero no descarta el pedido
         }
 
-        if (!/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.-]+$/.test(direccion.trim())) {
+        if (!/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion.trim())) {
           alert("Por favor, ingresa una dirección válida.");
+          direccion = null; // Resetea la dirección para que el ciclo continúe
         }
       }
 
-      const numeroWhatsApp = "5491171545860";
-      const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
-      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      // Si la dirección es válida, continúa con el pedido
+      if (direccion) {
+        const numeroWhatsApp = "5491171545860";
+        const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
-      try {
-        // Intentar abrir WhatsApp
-        window.open(urlWhatsApp, "_blank");
-      } catch (error) {
-        alert("Ocurrió un error al intentar redirigir a WhatsApp. Haz clic en el enlace generado.");
-        console.error(error);
+        try {
+          // Intentar abrir WhatsApp
+          window.open(urlWhatsApp, "_blank");
+        } catch (error) {
+          alert("Ocurrió un error al intentar redirigir a WhatsApp. Haz clic en el enlace generado.");
+          console.error(error);
 
-        const enlaceWhatsApp = document.createElement("a");
-        enlaceWhatsApp.href = urlWhatsApp;
-        enlaceWhatsApp.target = "_blank";
-        enlaceWhatsApp.textContent = "Haz clic aquí para confirmar tu pedido en WhatsApp";
-        document.body.appendChild(enlaceWhatsApp);
+          const enlaceWhatsApp = document.createElement("a");
+          enlaceWhatsApp.href = urlWhatsApp;
+          enlaceWhatsApp.target = "_blank";
+          enlaceWhatsApp.textContent = "Haz clic aquí para confirmar tu pedido en WhatsApp";
+          enlaceWhatsApp.style.display = "block";
+          enlaceWhatsApp.style.marginTop = "20px";
+          enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
+          enlaceWhatsApp.style.fontWeight = "bold";
+          document.body.appendChild(enlaceWhatsApp);
+        }
       }
     } else {
       alert("No has seleccionado ningún producto.");
