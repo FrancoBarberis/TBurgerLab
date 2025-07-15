@@ -176,8 +176,8 @@ span {
   align-items: center;
   box-sizing: border-box;
   overflow: visible;
-  position: relative;
-  margin-top: 50%;
+  position: absolute;
+  bottom: 0;
 }
 
 .precio {
@@ -242,7 +242,8 @@ h2 {
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  top: 20%;
+  margin-top: 10%;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);;
 }
 
@@ -254,7 +255,6 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 5px;
-  border-radius: 20px;
 }
 
 .controlesCantidad {
@@ -442,6 +442,7 @@ h2 {
 
   .contenedorGaleria {
     padding: 0;
+    margin-bottom: 30px;
   }
 
   .listaIngredientes {
@@ -505,7 +506,6 @@ h2 {
   }
 
   .contenedorFotoHamburguesa {
-    margin-top: 20%;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -515,9 +515,10 @@ h2 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: fit-content;
     padding: 0;
     background: none;
+    bottom: 0;
   }
 
   .seccionInfoCompra{
