@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let direccion = null;
 
       // Solicita la dirección hasta que sea válida o el usuario cancele
-      while (!direccion || !/^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
+      while (!direccion || !/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.-]+$/.test(direccion.trim())) {
         direccion = prompt("Por favor, ingresa tu dirección de envío:");
 
         if (direccion === null) {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return; // Rompe el flujo y no continúa con el pedido
         }
 
-        if (!/^[a-zA-Z0-9\s,.-]+$/.test(direccion.trim())) {
+        if (!/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.-]+$/.test(direccion.trim())) {
           alert("Por favor, ingresa una dirección válida.");
         }
       }
