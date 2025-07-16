@@ -107,39 +107,60 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.zIndex = "1000";
         modal.style.textAlign = "center";
         modal.style.animation = "popupAnimation 0.3s ease forwards"; // Aplica la animación
+        modal.style.fontFamily = "REFont"; // Aplica la fuente REFont
 
         const mensajeModal = document.createElement("p");
-        mensajeModal.textContent = "Haz clic en el enlace para confirmar tu pedido en WhatsApp:";
+        mensajeModal.textContent = "Haz clic en el enlace para confirmar tu pedido en WhatsApp";
         mensajeModal.style.marginBottom = "10px";
+        mensajeModal.style.fontSize = "2.5rem";
+        mensajeModal.style.fontWeight = "lighter";  
+        mensajeModal.style.fontFamily = "REFont"; // Aplica la fuente REFont
+
+        // Crear un contenedor para el enlace y el botón de cierre
+        const contenedorHorizontal = document.createElement("div");
+        contenedorHorizontal.style.display = "flex"; // Usa flexbox para organizar los elementos
+        contenedorHorizontal.style.justifyContent = "space-between"; // Separa los elementos horizontalmente
+        contenedorHorizontal.style.alignItems = "center"; // Alinea los elementos verticalmente
+        contenedorHorizontal.style.width = "100%"; // Asegura que ocupen todo el ancho del modal
+        contenedorHorizontal.style.marginTop = "20px"; // Espacio entre el contenedor y el contenido superior
 
         const enlaceWhatsApp = document.createElement("a");
         enlaceWhatsApp.href = urlWhatsApp;
         enlaceWhatsApp.target = "_blank";
         enlaceWhatsApp.textContent = "Abrir WhatsApp";
         enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
+        enlaceWhatsApp.style.fontSize = "2rem";
         enlaceWhatsApp.style.textDecoration = "none";
-        enlaceWhatsApp.style.fontWeight = "bold";
+        enlaceWhatsApp.style.fontWeight = "lighter";
+        enlaceWhatsApp.style.fontFamily = "REFont"; // Aplica la fuente REFont
+        enlaceWhatsApp.style.letterSpacing = "1px"; // Espacio entre letras
 
         const botonCerrar = document.createElement("button");
         botonCerrar.textContent = "Cerrar";
-        botonCerrar.style.marginTop = "10px";
         botonCerrar.style.padding = "5px 10px";
         botonCerrar.style.cursor = "pointer";
         botonCerrar.style.backgroundColor = "#f44336";
         botonCerrar.style.color = "#fff";
         botonCerrar.style.border = "none";
         botonCerrar.style.borderRadius = "4px";
+        botonCerrar.style.fontSize = "2rem";
+        botonCerrar.style.fontFamily = "REFont"; // Aplica la fuente REFont
+        botonCerrar.style.letterSpacing = "1px"; // Espacio entre letras
 
         botonCerrar.addEventListener("click", () => {
           document.body.removeChild(modal); // Elimina el pop-up
         });
 
+        // Agregar el enlace y el botón al contenedor horizontal
+        contenedorHorizontal.appendChild(enlaceWhatsApp);
+        contenedorHorizontal.appendChild(botonCerrar);
+
+        // Agregar el contenedor horizontal al modal
         modal.appendChild(mensajeModal);
-        modal.appendChild(enlaceWhatsApp);
-        modal.appendChild(botonCerrar);
+        modal.appendChild(contenedorHorizontal);
         document.body.appendChild(modal);
 
-        console.log("Pop-up generado con enlace:", modal); // Verifica que el pop-up se haya creado
+        console.log("Pop-up generado con espacio entre letras:", modal); // Verifica que el pop-up se haya creado
       }
     } else {
       alert("No has seleccionado ningún producto.");
