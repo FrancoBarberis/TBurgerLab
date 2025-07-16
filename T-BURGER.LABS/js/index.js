@@ -94,23 +94,52 @@ document.addEventListener("DOMContentLoaded", () => {
         const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
-        try {
-          // Intentar abrir WhatsApp
-          window.open(urlWhatsApp, "_blank");
-        } catch (error) {
-          alert("Ocurrió un error al intentar redirigir a WhatsApp. Haz clic en el enlace generado.");
-          console.error(error);
+        // Crear un pop-up dinámico
+        const modal = document.createElement("div");
+        modal.style.position = "fixed";
+        modal.style.top = "50%";
+        modal.style.left = "50%";
+        modal.style.transform = "translate(-50%, -50%) scale(0)"; // Inicia con escala 0 para la animación
+        modal.style.backgroundColor = "#fff";
+        modal.style.padding = "20px";
+        modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        modal.style.borderRadius = "8px";
+        modal.style.zIndex = "1000";
+        modal.style.textAlign = "center";
+        modal.style.animation = "popupAnimation 0.3s ease forwards"; // Aplica la animación
 
-          const enlaceWhatsApp = document.createElement("a");
-          enlaceWhatsApp.href = urlWhatsApp;
-          enlaceWhatsApp.target = "_blank";
-          enlaceWhatsApp.textContent = "Haz clic aquí para confirmar tu pedido en WhatsApp";
-          enlaceWhatsApp.style.display = "block";
-          enlaceWhatsApp.style.marginTop = "20px";
-          enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
-          enlaceWhatsApp.style.fontWeight = "bold";
-          document.body.appendChild(enlaceWhatsApp);
-        }
+        const mensajeModal = document.createElement("p");
+        mensajeModal.textContent = "Haz clic en el enlace para confirmar tu pedido en WhatsApp:";
+        mensajeModal.style.marginBottom = "10px";
+
+        const enlaceWhatsApp = document.createElement("a");
+        enlaceWhatsApp.href = urlWhatsApp;
+        enlaceWhatsApp.target = "_blank";
+        enlaceWhatsApp.textContent = "Abrir WhatsApp";
+        enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
+        enlaceWhatsApp.style.textDecoration = "none";
+        enlaceWhatsApp.style.fontWeight = "bold";
+
+        const botonCerrar = document.createElement("button");
+        botonCerrar.textContent = "Cerrar";
+        botonCerrar.style.marginTop = "10px";
+        botonCerrar.style.padding = "5px 10px";
+        botonCerrar.style.cursor = "pointer";
+        botonCerrar.style.backgroundColor = "#f44336";
+        botonCerrar.style.color = "#fff";
+        botonCerrar.style.border = "none";
+        botonCerrar.style.borderRadius = "4px";
+
+        botonCerrar.addEventListener("click", () => {
+          document.body.removeChild(modal); // Elimina el pop-up
+        });
+
+        modal.appendChild(mensajeModal);
+        modal.appendChild(enlaceWhatsApp);
+        modal.appendChild(botonCerrar);
+        document.body.appendChild(modal);
+
+        console.log("Pop-up generado con enlace:", modal); // Verifica que el pop-up se haya creado
       }
     } else {
       alert("No has seleccionado ningún producto.");

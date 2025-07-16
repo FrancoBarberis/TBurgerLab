@@ -377,6 +377,17 @@ h2 {
   display: inline-block; /* Asegura que el texto no se apile */
 }
 
+@keyframes popupAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0); /* Comienza con escala 0 */
+    opacity: 0; /* Comienza invisible */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* Escala completa */
+    opacity: 1; /* Totalmente visible */
+  }
+}
+
 @media (min-width: 600px) and (max-width: 1023px) {
   /* .galeria {
     flex-direction: row;
