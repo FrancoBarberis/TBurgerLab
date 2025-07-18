@@ -119,13 +119,14 @@ function crearModal(mensaje, callback) {
   modal.style.zIndex = "1000";
   modal.style.textAlign = "center";
   modal.style.fontFamily = "REFont";
-  modal.style.animation = "popupAnimation 0.3s ease-out"; // Aplica la animación
+  modal.style.animation = "popupAnimation 0.3s ease-out";
 
   const mensajeModal = document.createElement("p");
   mensajeModal.textContent = mensaje;
   mensajeModal.style.marginBottom = "20px";
   mensajeModal.style.fontSize = "1.8rem";
-  mensajeModal.style.fontWeight = "lighter";
+  mensajeModal.style.fontWeight = "lighter"; // Asegura que el peso de la fuente sea más ligero
+  mensajeModal.style.letterSpacing = "0.05em"; // Agrega espaciado entre letras
 
   const botonCerrar = document.createElement("button");
   botonCerrar.textContent = "Cerrar";
@@ -168,26 +169,25 @@ function crearModalDireccion(mensaje, callback) {
   mensajeModal.style.marginBottom = "20px";
   mensajeModal.style.fontSize = "1.8rem";
   mensajeModal.style.fontWeight = "lighter";
+  mensajeModal.style.letterSpacing = "0.05em";
 
   const inputDireccion = document.createElement("input");
   inputDireccion.type = "text";
   inputDireccion.placeholder = "Ingresa tu dirección";
-  inputDireccion.style.display = "block"; // Asegura que el input sea un bloque
-  inputDireccion.style.margin = "0 auto"; // Centra horizontalmente el input
-  inputDireccion.style.width = "80%"; // Ajusta el ancho del input
+  inputDireccion.style.display = "block";
+  inputDireccion.style.margin = "0 auto";
+  inputDireccion.style.width = "80%";
   inputDireccion.style.padding = "10px";
   inputDireccion.style.marginBottom = "20px";
   inputDireccion.style.border = "1px solid #ccc";
   inputDireccion.style.borderRadius = "4px";
-  inputDireccion.style.fontSize = "1rem"; // Mantén el tamaño de fuente
-  // Elimina inputDireccion.style.fontFamily para usar la fuente predeterminada del navegador
+  inputDireccion.style.fontSize = "1rem";
 
-  // Contenedor para los botones
   const contenedorBotones = document.createElement("div");
   contenedorBotones.style.display = "flex";
-  contenedorBotones.style.justifyContent = "center"; // Centra los botones horizontalmente
-  contenedorBotones.style.gap = "10px"; // Espacio entre los botones
-  contenedorBotones.style.marginTop = "10px"; // Espacio superior
+  contenedorBotones.style.justifyContent = "center";
+  contenedorBotones.style.gap = "10px";
+  contenedorBotones.style.marginTop = "10px";
 
   const botonConfirmar = document.createElement("button");
   botonConfirmar.textContent = "Confirmar";
@@ -198,7 +198,7 @@ function crearModalDireccion(mensaje, callback) {
   botonConfirmar.style.border = "none";
   botonConfirmar.style.borderRadius = "4px";
   botonConfirmar.style.fontSize = "1.5rem";
-  botonConfirmar.style.fontFamily = "REFont";
+  botonConfirmar.style.fontFamily = "REFont"; // Asegura que la fuente sea REFont
 
   const botonCancelar = document.createElement("button");
   botonCancelar.textContent = "Cancelar";
@@ -209,13 +209,13 @@ function crearModalDireccion(mensaje, callback) {
   botonCancelar.style.border = "none";
   botonCancelar.style.borderRadius = "4px";
   botonCancelar.style.fontSize = "1.5rem";
-  botonCancelar.style.fontFamily = "REFont";
+  botonCancelar.style.fontFamily = "REFont"; // Asegura que la fuente sea REFont
 
   botonConfirmar.addEventListener("click", () => {
     const direccion = inputDireccion.value.trim();
     if (direccion && /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion)) {
       document.body.removeChild(modal);
-      callback(direccion); // Devuelve la dirección al callback
+      callback(direccion);
     } else {
       crearModal("Por favor, ingresa una dirección válida.");
     }
@@ -223,10 +223,9 @@ function crearModalDireccion(mensaje, callback) {
 
   botonCancelar.addEventListener("click", () => {
     document.body.removeChild(modal);
-    callback(null); // Devuelve null si se cancela
+    callback(null);
   });
 
-  // Agrega los botones al contenedor
   contenedorBotones.appendChild(botonConfirmar);
   contenedorBotones.appendChild(botonCancelar);
 
@@ -255,7 +254,8 @@ function crearModalWhatsApp(mensaje, urlWhatsApp) {
   mensajeModal.textContent = mensaje;
   mensajeModal.style.marginBottom = "20px";
   mensajeModal.style.fontSize = "1.8rem";
-  mensajeModal.style.fontWeight = "lighter";
+  mensajeModal.style.fontWeight = "lighter"; // Asegura que el peso de la fuente sea más ligero
+  mensajeModal.style.letterSpacing = "0.05em"; // Agrega espaciado entre letras
 
   const enlaceWhatsApp = document.createElement("a");
   enlaceWhatsApp.href = urlWhatsApp;
@@ -263,17 +263,14 @@ function crearModalWhatsApp(mensaje, urlWhatsApp) {
   enlaceWhatsApp.textContent = "Abrir WhatsApp";
   enlaceWhatsApp.style.display = "inline-block";
   enlaceWhatsApp.style.padding = "10px 20px";
-  enlaceWhatsApp.style.backgroundColor = "#25D366"; // Color verde de WhatsApp
+  enlaceWhatsApp.style.backgroundColor = "#25D366";
   enlaceWhatsApp.style.color = "#fff";
   enlaceWhatsApp.style.textDecoration = "none";
   enlaceWhatsApp.style.borderRadius = "4px";
   enlaceWhatsApp.style.fontSize = "1.5rem";
-  enlaceWhatsApp.style.fontFamily = "REFont";
-  enlaceWhatsApp.style.marginTop = "10px";
 
-  // Botón de cierre en la esquina superior derecha
   const botonCerrar = document.createElement("button");
-  botonCerrar.textContent = "×"; // Cambia el texto a "×"
+  botonCerrar.textContent = "×";
   botonCerrar.style.position = "absolute";
   botonCerrar.style.top = "5px";
   botonCerrar.style.right = "10px";
@@ -287,8 +284,8 @@ function crearModalWhatsApp(mensaje, urlWhatsApp) {
     document.body.removeChild(modal);
   });
 
+  modal.appendChild(botonCerrar);
   modal.appendChild(mensajeModal);
   modal.appendChild(enlaceWhatsApp);
-  modal.appendChild(botonCerrar);
   document.body.appendChild(modal);
 }

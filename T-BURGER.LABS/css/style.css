@@ -168,30 +168,6 @@ h1 {
   z-index: 1;
 }
 
-.btn-desplegarLista {
-  position: absolute; /* Posiciona el botón dentro de .tipoHamburguesa */
-  top: 35px; /* Espacio desde la parte superior */
-  right: 8px; /* Espacio desde la parte derecha */
-  background-color: white; /* Color blanco */
-  color: black; /* Color del icono rojo */
-  border: none; /* Sin bordes */
-  border-radius: 10%; /* Forma circular */
-  width: 40px; /* Tamaño del botón */
-  height: 40px; /* Tamaño del botón */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer; /* Cambia el cursor al pasar el mouse */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra */
-  z-index: 4; /* Asegura que esté por encima de otros elementos */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-desplegarLista:hover {
-  background-color: grey; /* Verde más oscuro al hacer hover */
-  transform: scale(1.1); /* Efecto de agrandamiento */
-}
-
 span {
   color: #bd1616;
   font-family: "REFont";
@@ -312,7 +288,7 @@ h2 {
   background: #bd1616;
   color: #ffe6e6;
   border: none;
-  border-radius: 10%;
+  border-radius: 8px;
   width: 32px;
   height: 32px;
   font-size: 1.2em;
