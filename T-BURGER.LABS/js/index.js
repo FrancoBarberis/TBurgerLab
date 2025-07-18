@@ -179,8 +179,8 @@ function crearModalDireccion(mensaje, callback) {
   inputDireccion.style.marginBottom = "20px";
   inputDireccion.style.border = "1px solid #ccc";
   inputDireccion.style.borderRadius = "4px";
-  inputDireccion.style.fontSize = "1.5rem";
-  inputDireccion.style.fontFamily = "REFont";
+  inputDireccion.style.fontSize = "1rem"; // Mantén el tamaño de fuente
+  // Elimina inputDireccion.style.fontFamily para usar la fuente predeterminada del navegador
 
   // Contenedor para los botones
   const contenedorBotones = document.createElement("div");
@@ -271,24 +271,24 @@ function crearModalWhatsApp(mensaje, urlWhatsApp) {
   enlaceWhatsApp.style.fontFamily = "REFont";
   enlaceWhatsApp.style.marginTop = "10px";
 
+  // Botón de cierre en la esquina superior derecha
   const botonCerrar = document.createElement("button");
-  botonCerrar.textContent = "Cerrar";
-  botonCerrar.style.padding = "10px 20px";
-  botonCerrar.style.cursor = "pointer";
-  botonCerrar.style.backgroundColor = "#f44336";
-  botonCerrar.style.color = "#fff";
+  botonCerrar.textContent = "×"; // Cambia el texto a "×"
+  botonCerrar.style.position = "absolute";
+  botonCerrar.style.top = "5px";
+  botonCerrar.style.right = "10px";
+  botonCerrar.style.backgroundColor = "transparent";
   botonCerrar.style.border = "none";
-  botonCerrar.style.borderRadius = "4px";
   botonCerrar.style.fontSize = "1.5rem";
-  botonCerrar.style.fontFamily = "REFont";
-  botonCerrar.style.marginTop = "10px";
+  botonCerrar.style.cursor = "pointer";
+  botonCerrar.style.color = "#333";
 
   botonCerrar.addEventListener("click", () => {
     document.body.removeChild(modal);
   });
 
   modal.appendChild(mensajeModal);
-  modal.appendChild(enlaceWhatsApp); // Agrega el enlace directamente
+  modal.appendChild(enlaceWhatsApp);
   modal.appendChild(botonCerrar);
   document.body.appendChild(modal);
 }
