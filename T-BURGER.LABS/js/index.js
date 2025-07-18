@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (seDescarto) {
-      alert("Pedido descartado"); // Muestra el mensaje solo si se descartó algo
+      crearModal("Pedido descartado");
     }
   });
 
@@ -73,99 +73,169 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hayProductos) {
       let direccion = null;
 
-      // Solicita la dirección hasta que sea válida o el usuario cancele
-      while (!direccion || !/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion.trim())) {
-        direccion = prompt("Por favor, ingresa tu dirección de envío:");
+      const solicitarDireccion = () => {
+        crearModalDireccion("Por favor, ingresa tu dirección de envío:", (resultado) => {
+          if (resultado === null) {
+            return; // Detiene el proceso de confirmación
+          }
 
-        if (direccion === null) {
-          alert("Has cancelado la solicitud de dirección.");
-          return; // Detiene el proceso de confirmación, pero no descarta el pedido
-        }
+          direccion = resultado;
 
-        if (!/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion.trim())) {
-          alert("Por favor, ingresa una dirección válida.");
-          direccion = null; // Resetea la dirección para que el ciclo continúe
-        }
-      }
+          if (!/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion.trim())) {
+            crearModal("Por favor, ingresa una dirección válida.");
+            solicitarDireccion(); // Vuelve a solicitar la dirección
+          } else {
+            // Continúa con el pedido si la dirección es válida
+            const numeroWhatsApp = "5491171545860";
+            const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
-      // Si la dirección es válida, continúa con el pedido
-      if (direccion) {
-        const numeroWhatsApp = "5491171545860";
-        const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-        // Crear un pop-up dinámico
-        const modal = document.createElement("div");
-        modal.style.position = "fixed";
-        modal.style.top = "50%";
-        modal.style.left = "50%";
-        modal.style.transform = "translate(-50%, -50%) scale(0)"; // Inicia con escala 0 para la animación
-        modal.style.backgroundColor = "#fff";
-        modal.style.padding = "20px";
-        modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-        modal.style.borderRadius = "8px";
-        modal.style.zIndex = "1000";
-        modal.style.textAlign = "center";
-        modal.style.animation = "popupAnimation 0.3s ease forwards"; // Aplica la animación
-        modal.style.fontFamily = "REFont"; // Aplica la fuente REFont
-
-        const mensajeModal = document.createElement("p");
-        mensajeModal.textContent = "Haz clic en el enlace para confirmar tu pedido en WhatsApp";
-        mensajeModal.style.marginBottom = "10px";
-        mensajeModal.style.fontSize = "2.5rem";
-        mensajeModal.style.fontWeight = "lighter";  
-        mensajeModal.style.fontFamily = "REFont"; // Aplica la fuente REFont
-
-        // Crear un contenedor para el enlace y el botón de cierre
-        const contenedorHorizontal = document.createElement("div");
-        contenedorHorizontal.style.display = "flex"; // Usa flexbox para organizar los elementos
-        contenedorHorizontal.style.justifyContent = "space-between"; // Separa los elementos horizontalmente
-        contenedorHorizontal.style.alignItems = "center"; // Alinea los elementos verticalmente
-        contenedorHorizontal.style.width = "100%"; // Asegura que ocupen todo el ancho del modal
-        contenedorHorizontal.style.marginTop = "20px"; // Espacio entre el contenedor y el contenido superior
-
-        const enlaceWhatsApp = document.createElement("a");
-        enlaceWhatsApp.href = urlWhatsApp;
-        enlaceWhatsApp.target = "_blank";
-        enlaceWhatsApp.textContent = "Abrir WhatsApp";
-        enlaceWhatsApp.style.color = "#25d366"; // Color de WhatsApp
-        enlaceWhatsApp.style.fontSize = "2rem";
-        enlaceWhatsApp.style.textDecoration = "none";
-        enlaceWhatsApp.style.fontWeight = "lighter";
-        enlaceWhatsApp.style.fontFamily = "REFont"; // Aplica la fuente REFont
-        enlaceWhatsApp.style.letterSpacing = "1px"; // Espacio entre letras
-
-        const botonCerrar = document.createElement("button");
-        botonCerrar.textContent = "Cerrar";
-        botonCerrar.style.padding = "5px 10px";
-        botonCerrar.style.cursor = "pointer";
-        botonCerrar.style.backgroundColor = "#f44336";
-        botonCerrar.style.color = "#fff";
-        botonCerrar.style.border = "none";
-        botonCerrar.style.borderRadius = "4px";
-        botonCerrar.style.fontSize = "2rem";
-        botonCerrar.style.fontFamily = "REFont"; // Aplica la fuente REFont
-        botonCerrar.style.letterSpacing = "1px"; // Espacio entre letras
-
-        botonCerrar.addEventListener("click", () => {
-          document.body.removeChild(modal); // Elimina el pop-up
+            // Reemplaza el alert por un modal
+            crearModal("Dirección válida. Puedes continuar con tu pedido.", () => {
+              console.log("Dirección válida:", direccion);
+              console.log("Mensaje para WhatsApp:", mensaje);
+              window.open(urlWhatsApp, "_blank"); // Abre el enlace de WhatsApp
+            });
+          }
         });
+      };
 
-        // Agregar el enlace y el botón al contenedor horizontal
-        contenedorHorizontal.appendChild(enlaceWhatsApp);
-        contenedorHorizontal.appendChild(botonCerrar);
-
-        // Agregar el contenedor horizontal al modal
-        modal.appendChild(mensajeModal);
-        modal.appendChild(contenedorHorizontal);
-        document.body.appendChild(modal);
-
-        console.log("Pop-up generado con espacio entre letras:", modal); // Verifica que el pop-up se haya creado
-      }
+      solicitarDireccion();
     } else {
-      alert("No has seleccionado ningún producto.");
+      crearModal("No has seleccionado ningún producto.");
+      return; // Detiene el proceso de confirmación
     }
   });
 });
 
 hideSpinner();
+
+function crearModal(mensaje, callback) {
+  const modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "50%";
+  modal.style.left = "50%";
+  modal.style.transform = "translate(-50%, -50%)";
+  modal.style.backgroundColor = "#fff";
+  modal.style.padding = "20px";
+  modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+  modal.style.borderRadius = "8px";
+  modal.style.zIndex = "1000";
+  modal.style.textAlign = "center";
+  modal.style.fontFamily = "REFont";
+  modal.style.animation = "popupAnimation 0.3s ease-out"; // Aplica la animación
+
+  const mensajeModal = document.createElement("p");
+  mensajeModal.textContent = mensaje;
+  mensajeModal.style.marginBottom = "20px";
+  mensajeModal.style.fontSize = "1.8rem";
+  mensajeModal.style.fontWeight = "lighter";
+
+  const botonCerrar = document.createElement("button");
+  botonCerrar.textContent = "Cerrar";
+  botonCerrar.style.padding = "10px 20px";
+  botonCerrar.style.cursor = "pointer";
+  botonCerrar.style.backgroundColor = "#f44336";
+  botonCerrar.style.color = "#fff";
+  botonCerrar.style.border = "none";
+  botonCerrar.style.borderRadius = "4px";
+  botonCerrar.style.fontSize = "1.5rem";
+  botonCerrar.style.fontFamily = "REFont";
+
+  botonCerrar.addEventListener("click", () => {
+    document.body.removeChild(modal);
+    if (callback) callback(); // Ejecuta el callback si se proporciona
+  });
+
+  modal.appendChild(mensajeModal);
+  modal.appendChild(botonCerrar);
+  document.body.appendChild(modal);
+}
+
+function crearModalDireccion(mensaje, callback) {
+  const modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "50%";
+  modal.style.left = "50%";
+  modal.style.transform = "translate(-50%, -50%)";
+  modal.style.backgroundColor = "#fff";
+  modal.style.padding = "20px";
+  modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+  modal.style.borderRadius = "8px";
+  modal.style.zIndex = "1000";
+  modal.style.textAlign = "center";
+  modal.style.fontFamily = "REFont";
+  modal.style.animation = "popupAnimation 0.3s ease-out";
+
+  const mensajeModal = document.createElement("p");
+  mensajeModal.textContent = mensaje;
+  mensajeModal.style.marginBottom = "20px";
+  mensajeModal.style.fontSize = "1.8rem";
+  mensajeModal.style.fontWeight = "lighter";
+
+  const inputDireccion = document.createElement("input");
+  inputDireccion.type = "text";
+  inputDireccion.placeholder = "Ingresa tu dirección";
+  inputDireccion.style.display = "block"; // Asegura que el input sea un bloque
+  inputDireccion.style.margin = "0 auto"; // Centra horizontalmente el input
+  inputDireccion.style.width = "80%"; // Ajusta el ancho del input
+  inputDireccion.style.padding = "10px";
+  inputDireccion.style.marginBottom = "20px";
+  inputDireccion.style.border = "1px solid #ccc";
+  inputDireccion.style.borderRadius = "4px";
+  inputDireccion.style.fontSize = "1.5rem";
+  inputDireccion.style.fontFamily = "REFont";
+
+  // Contenedor para los botones
+  const contenedorBotones = document.createElement("div");
+  contenedorBotones.style.display = "flex";
+  contenedorBotones.style.justifyContent = "center"; // Centra los botones horizontalmente
+  contenedorBotones.style.gap = "10px"; // Espacio entre los botones
+  contenedorBotones.style.marginTop = "10px"; // Espacio superior
+
+  const botonConfirmar = document.createElement("button");
+  botonConfirmar.textContent = "Confirmar";
+  botonConfirmar.style.padding = "10px 20px";
+  botonConfirmar.style.cursor = "pointer";
+  botonConfirmar.style.backgroundColor = "#4CAF50";
+  botonConfirmar.style.color = "#fff";
+  botonConfirmar.style.border = "none";
+  botonConfirmar.style.borderRadius = "4px";
+  botonConfirmar.style.fontSize = "1.5rem";
+  botonConfirmar.style.fontFamily = "REFont";
+
+  const botonCancelar = document.createElement("button");
+  botonCancelar.textContent = "Cancelar";
+  botonCancelar.style.padding = "10px 20px";
+  botonCancelar.style.cursor = "pointer";
+  botonCancelar.style.backgroundColor = "#f44336";
+  botonCancelar.style.color = "#fff";
+  botonCancelar.style.border = "none";
+  botonCancelar.style.borderRadius = "4px";
+  botonCancelar.style.fontSize = "1.5rem";
+  botonCancelar.style.fontFamily = "REFont";
+
+  botonConfirmar.addEventListener("click", () => {
+    const direccion = inputDireccion.value.trim();
+    if (direccion && /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion)) {
+      document.body.removeChild(modal);
+      callback(direccion); // Devuelve la dirección al callback
+    } else {
+      crearModal("Por favor, ingresa una dirección válida.");
+    }
+  });
+
+  botonCancelar.addEventListener("click", () => {
+    document.body.removeChild(modal);
+    callback(null); // Devuelve null si se cancela
+  });
+
+  // Agrega los botones al contenedor
+  contenedorBotones.appendChild(botonConfirmar);
+  contenedorBotones.appendChild(botonCancelar);
+
+  modal.appendChild(mensajeModal);
+  modal.appendChild(inputDireccion);
+  modal.appendChild(contenedorBotones);
+  document.body.appendChild(modal);
+}
