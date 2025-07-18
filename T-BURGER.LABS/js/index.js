@@ -91,11 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
             // Reemplaza el alert por un modal
-            crearModal("Dirección válida. Puedes continuar con tu pedido.", () => {
-              console.log("Dirección válida:", direccion);
-              console.log("Mensaje para WhatsApp:", mensaje);
-              window.open(urlWhatsApp, "_blank"); // Abre el enlace de WhatsApp
-            });
+            crearModalWhatsApp("Dirección válida. Puedes continuar con tu pedido.", urlWhatsApp);
           }
         });
       };
@@ -237,5 +233,62 @@ function crearModalDireccion(mensaje, callback) {
   modal.appendChild(mensajeModal);
   modal.appendChild(inputDireccion);
   modal.appendChild(contenedorBotones);
+  document.body.appendChild(modal);
+}
+
+function crearModalWhatsApp(mensaje, urlWhatsApp) {
+  const modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "50%";
+  modal.style.left = "50%";
+  modal.style.transform = "translate(-50%, -50%)";
+  modal.style.backgroundColor = "#fff";
+  modal.style.padding = "20px";
+  modal.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+  modal.style.borderRadius = "8px";
+  modal.style.zIndex = "1000";
+  modal.style.textAlign = "center";
+  modal.style.fontFamily = "REFont";
+  modal.style.animation = "popupAnimation 0.3s ease-out";
+
+  const mensajeModal = document.createElement("p");
+  mensajeModal.textContent = mensaje;
+  mensajeModal.style.marginBottom = "20px";
+  mensajeModal.style.fontSize = "1.8rem";
+  mensajeModal.style.fontWeight = "lighter";
+
+  const enlaceWhatsApp = document.createElement("a");
+  enlaceWhatsApp.href = urlWhatsApp;
+  enlaceWhatsApp.target = "_blank";
+  enlaceWhatsApp.textContent = "Abrir WhatsApp";
+  enlaceWhatsApp.style.display = "inline-block";
+  enlaceWhatsApp.style.padding = "10px 20px";
+  enlaceWhatsApp.style.backgroundColor = "#25D366"; // Color verde de WhatsApp
+  enlaceWhatsApp.style.color = "#fff";
+  enlaceWhatsApp.style.textDecoration = "none";
+  enlaceWhatsApp.style.borderRadius = "4px";
+  enlaceWhatsApp.style.fontSize = "1.5rem";
+  enlaceWhatsApp.style.fontFamily = "REFont";
+  enlaceWhatsApp.style.marginTop = "10px";
+
+  const botonCerrar = document.createElement("button");
+  botonCerrar.textContent = "Cerrar";
+  botonCerrar.style.padding = "10px 20px";
+  botonCerrar.style.cursor = "pointer";
+  botonCerrar.style.backgroundColor = "#f44336";
+  botonCerrar.style.color = "#fff";
+  botonCerrar.style.border = "none";
+  botonCerrar.style.borderRadius = "4px";
+  botonCerrar.style.fontSize = "1.5rem";
+  botonCerrar.style.fontFamily = "REFont";
+  botonCerrar.style.marginTop = "10px";
+
+  botonCerrar.addEventListener("click", () => {
+    document.body.removeChild(modal);
+  });
+
+  modal.appendChild(mensajeModal);
+  modal.appendChild(enlaceWhatsApp); // Agrega el enlace directamente
+  modal.appendChild(botonCerrar);
   document.body.appendChild(modal);
 }
