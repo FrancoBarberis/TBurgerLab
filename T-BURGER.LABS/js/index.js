@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (seDescarto) {
+      direccionTemporal = null; // Limpia la dirección temporal
       crearModal("Pedido descartado");
     }
   });
@@ -183,6 +184,11 @@ function crearModalDireccion(mensaje, callback) {
   inputDireccion.style.borderRadius = "4px";
   inputDireccion.style.fontSize = "1rem";
 
+  // Autocompletar el campo de texto si ya existe una dirección temporal
+  if (direccionTemporal) {
+    inputDireccion.value = direccionTemporal;
+  }
+
   const contenedorBotones = document.createElement("div");
   contenedorBotones.style.display = "flex";
   contenedorBotones.style.justifyContent = "center";
@@ -198,7 +204,7 @@ function crearModalDireccion(mensaje, callback) {
   botonConfirmar.style.border = "none";
   botonConfirmar.style.borderRadius = "4px";
   botonConfirmar.style.fontSize = "1.5rem";
-  botonConfirmar.style.fontFamily = "REFont"; // Asegura que la fuente sea REFont
+  botonConfirmar.style.fontFamily = "REFont";
 
   const botonCancelar = document.createElement("button");
   botonCancelar.textContent = "Cancelar";
@@ -209,11 +215,12 @@ function crearModalDireccion(mensaje, callback) {
   botonCancelar.style.border = "none";
   botonCancelar.style.borderRadius = "4px";
   botonCancelar.style.fontSize = "1.5rem";
-  botonCancelar.style.fontFamily = "REFont"; // Asegura que la fuente sea REFont
+  botonCancelar.style.fontFamily = "REFont";
 
   botonConfirmar.addEventListener("click", () => {
     const direccion = inputDireccion.value.trim();
     if (direccion && /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.-]+$/.test(direccion)) {
+      direccionTemporal = direccion; // Guarda la dirección temporalmente
       document.body.removeChild(modal);
       callback(direccion);
     } else {
@@ -222,6 +229,7 @@ function crearModalDireccion(mensaje, callback) {
   });
 
   botonCancelar.addEventListener("click", () => {
+    direccionTemporal = null; // Limpia la dirección temporal
     document.body.removeChild(modal);
     callback(null);
   });
@@ -289,3 +297,5 @@ function crearModalWhatsApp(mensaje, urlWhatsApp) {
   modal.appendChild(enlaceWhatsApp);
   document.body.appendChild(modal);
 }
+
+let direccionTemporal = null; // Variable global para almacenar la dirección
