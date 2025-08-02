@@ -140,23 +140,18 @@ h1 {
   font-family: "REFont";
   font-size: 2.2rem;
   font-weight: lighter;
-  text-align: center; /* Centra el texto */
+  text-align: center;
   width: 100%;
   padding: 5px 5px;
   background-color: rgba(0, 0, 0, 0.3);
   height: fit-content;
-  z-index: 3;
-  opacity: 0;
-  visibility: hidden; /* Oculta el texto por defecto */
-  width: 100%; /* Igual al ancho de .fotoPersonaje */
-  min-width: unset; /* Elimina el ancho mínimo fijo */
-  min-height: 40px; /* Asegura que tenga altura mínima */
-  display: block; /* Asegura que ocupe espacio */
-  box-sizing: border-box;
-  position: absolute;
+  z-index: 4;
+  opacity: 1;
+  visibility: visible; 
+  position: relative;
   transform: translateY(70%);
   margin-top: 30px;
-  transition: none; /* Elimina la transición para que desaparezca instantáneamente */
+  transition: opacity 0.3s ease-in-out; /* Transición suave */
 }
 
 .galeria {
@@ -178,6 +173,7 @@ h1 {
   filter: none;
   transition: none;
   cursor: default;
+  overflow: visible; /* Asegura que los elementos hijos sean visibles */
 }
 
 .tipoHamburguesa .fotoPersonaje {
@@ -621,10 +617,8 @@ h2 {
 
   .tipoHamburguesa:hover .listaIngredientes {
     opacity: 1;
-    visibility: visible;
+    visibility: visible; /* Muestra la lista al hacer hover */
     pointer-events: auto;
-    transform: translate(-50%,0%);
-    transition: opacity 0.7s ease-in; /* Transición suave al aparecer */
   }
 
   .tipoHamburguesa:hover .fotoPersonaje {
