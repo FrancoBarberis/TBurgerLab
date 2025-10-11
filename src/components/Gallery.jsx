@@ -1,5 +1,7 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import BurgerCard from './BurgerCard';
+import ParallaxText from './ParallaxText';
+import FadeInElement from './FadeInElement';
 import { burgers } from '../data/burgers';
 
 const Gallery = forwardRef(({ onOrderChange }, ref) => {
@@ -23,19 +25,28 @@ const Gallery = forwardRef(({ onOrderChange }, ref) => {
   }));
 
   return (
-    <div className="w-screen bg-black h-screen flex flex-col items-center justify-center cursor-crosshair px-4 overflow-hidden">
-      <h2 className="text-4xl font-resident text-red-400 mb-8 uppercase drop-shadow-2xl">
-        COMBOS
-      </h2>
-      <div className="flex justify-center items-end">
-        {burgers.map((burger) => (
-          <BurgerCard
-            key={burger.id}
-            burger={burger}
-            ref={el => cardRefs.current[burger.id] = el}
-            onQuantityChange={handleQuantityChange}
-          />
-        ))}
+    <div className="w-screen bg-black min-h-screen flex flex-col items-center justify-center cursor-crosshair px-4 overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900 to-black opacity-80"></div>
+      <div className="relative z-10 flex flex-col items-center pt-16">
+        <FadeInElement className="mb-8">
+          <ParallaxText speed={0.1}>
+            <h2 className="text-4xl font-resident text-red-400 uppercase drop-shadow-2xl">
+              COMBOS
+            </h2>
+          </ParallaxText>
+        </FadeInElement>
+        <FadeInElement>
+          <div className="flex justify-center items-end gap-1">
+            {burgers.map((burger) => (
+              <BurgerCard
+                key={burger.id}
+                burger={burger}
+                ref={el => cardRefs.current[burger.id] = el}
+                onQuantityChange={handleQuantityChange}
+              />
+            ))}
+          </div>
+        </FadeInElement>
       </div>
     </div>
   );

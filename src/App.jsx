@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
+import ParallaxSection from './components/ParallaxSection';
 import { obtenerPrecios } from './services/firebase';
 import { burgers } from './data/burgers';
 
@@ -98,16 +99,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black m-0 p-0">
+    <div className="bg-black m-0 p-0 overflow-x-hidden">
       <Header 
         onConfirmOrder={handleConfirmOrder}
         onDiscardOrder={handleDiscardOrder}
       />
-      <Hero />
-      <Gallery 
-        ref={galleryRef}
-        onOrderChange={handleOrderChange}
-      />
+      <ParallaxSection speed={0.2} className="relative">
+        <Hero />
+      </ParallaxSection>
+      <ParallaxSection speed={0.5} isGallery={true} className="relative z-10 -mt-20">
+        <Gallery 
+          ref={galleryRef}
+          onOrderChange={handleOrderChange}
+        />
+      </ParallaxSection>
     </div>
   );
 }

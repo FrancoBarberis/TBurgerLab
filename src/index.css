@@ -3,10 +3,29 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'ResidentEvil';
+  font-family: 'Resident Evil Large';
   src: url('/fonts/Resident Evil Large.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-element {
+  will-change: transform;
+}
+
+.parallax-text {
+  will-change: transform, opacity;
+  transition: opacity 0.1s ease-out;
+}
+
+.fade-in-element {
+  will-change: opacity;
+  transition: opacity 0.2s ease-out;
 }
 
 :root {
