@@ -37,7 +37,7 @@ const Hero = () => {
         <source src="/vids/LeonVSChris.mp4" type="video/mp4" />
       </video>
       
-      {/* Overlay oscuro para mejorar legibilidad */}
+    {/* Overlay oscuro para mejorar legibilidad */}
   <div className="absolute inset-0 bg-black bg-opacity-60 sm:bg-opacity-40 z-5"></div>
       
       <div className="sm:text-right text-center text-white drop-shadow-2xl sm:transform -translate-y-16 relative z-10 px-4 py-8 w-full">
