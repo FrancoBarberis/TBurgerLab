@@ -1,4 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import IngredientesAnimados from './IngredientesAnimados';
+import IngredientesTypedVertical from './IngredientesTypedVertical';
 
 const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className = "" }, ref) => {
   // Recibo quantities como prop
@@ -38,16 +40,14 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
       {/* Content */}
       <div className="relative z-10 p-4 h-full flex flex-col">
         {/* Título e ingredientes siempre visibles en móvil, solo en hover en desktop */}
-      <div className="w-full flex flex-col items-center justify-center text-center block sm:hidden h-full">
-          <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
-            {burger.name}
-          </h3>
-          <div className="flex-1 flex items-center justify-center w-full">
-            <p className="text-gray-100 text-sm mb-6 leading-relaxed font-resident">
-              {burger.ingredients}
-            </p>
-          </div>
+      <div className="w-full flex flex-col items-center justify-center text-center sm:hidden h-full">
+        <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
+          {burger.name}
+        </h3>
+        <div className="flex-1 flex items-center justify-center w-full">
+          <IngredientesTypedVertical ingredientes={burger.ingredients.split(',').map(i => i.trim())} />
         </div>
+      </div>
     <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:transform sm:translate-x-8 sm:group-hover:translate-x-0 flex-1 flex items-center justify-center sm:block hidden">
           <div className="w-72 text-center mx-auto">
             <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
