@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-  <div className="w-screen h-dvh flex items-center justify-end pr-16 pointer-events-none relative overflow-hidden top-0 left-0">
+  <div className="w-screen h-dvh flex items-center justify-end sm:pr-16 pr-0 pointer-events-none relative overflow-hidden top-0 left-0">
       {/* Video de fondo */}
       <video 
         ref={videoRef}
@@ -27,14 +27,10 @@ const Hero = () => {
         loop 
         playsInline
         preload="metadata"
-        className="absolute w-full h-full object-cover z-0"
+        className="absolute w-full h-full object-cover z-0 sm:w-full sm:h-full sm:min-w-[100vw] sm:min-h-[100dvh] w-screen h-[60vh] min-h-[320px]"
         style={{ 
           top: '0', 
           left: '0',
-          width: '100vw',
-          height: '100dvh',
-          minWidth: '100vw',
-          minHeight: '100dvh',
           objectFit: 'cover'
         }}
       >
@@ -42,16 +38,16 @@ const Hero = () => {
       </video>
       
       {/* Overlay oscuro para mejorar legibilidad */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 z-5"></div>
+  <div className="absolute inset-0 bg-black bg-opacity-60 sm:bg-opacity-40 z-5"></div>
       
-      <div className="text-right text-white drop-shadow-2xl transform -translate-y-16 relative z-10">
+      <div className="sm:text-right text-center text-white drop-shadow-2xl sm:transform -translate-y-16 relative z-10 px-4 py-8 w-full">
         <ParallaxText speed={0.6} fadeOut={true} className="block">
-          <h1 className="text-6xl font-resident text-red-400 mb-4 leading-tight uppercase drop-shadow-2xl">
+          <h1 className="sm:text-6xl text-3xl font-resident text-red-400 mb-4 leading-tight uppercase drop-shadow-2xl">
             Los sabores se<br/>descontrolaron
           </h1>
         </ParallaxText>
         <ParallaxText speed={0.5} fadeOut={true} className="block">
-          <p className="text-2xl font-resident text-gray-200 opacity-90 drop-shadow-xl">
+          <p className="sm:text-2xl text-base font-resident text-gray-200 opacity-90 drop-shadow-xl">
             ahora solo queda sobrevivir al menú
           </p>
         </ParallaxText>

@@ -2,7 +2,8 @@ import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import IngredientesAnimados from './IngredientesAnimados';
 import IngredientesTypedVertical from './IngredientesTypedVertical';
 
-const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className = "" }, ref) => {
+// ingredientes: array de objetos { nombre, icono }
+const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantities, className = "" }, ref) => {
   // Recibo quantities como prop
   // El control visual usa quantities directamente
   const handleQuantityChange = (type, increment) => {
@@ -45,7 +46,7 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
           {burger.name}
         </h3>
         <div className="flex-1 flex items-center justify-center w-full">
-          <IngredientesTypedVertical ingredientes={burger.ingredients.split(',').map(i => i.trim())} />
+          <IngredientesTypedVertical ingredientes={ingredientes ? ingredientes.map(i => `${i.icono} ${i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)}`) : burger.ingredients.split(',').map(i => i.trim())} backSpeed={120} />
         </div>
       </div>
   <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:block hidden w-full text-center">
@@ -54,11 +55,9 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
               {burger.name}
             </h3>
             <ul className="text-gray-100 text-xs mb-6 leading-relaxed font-resident flex flex-col items-start gap-1 w-full text-left">
-              {burger.ingredients.split(',').map((i, idx) => {
-                const texto = i.trim();
-                const mayuscula = texto.charAt(0).toUpperCase() + texto.slice(1);
-                return <li key={idx} className="w-full text-left break-words">• {mayuscula}</li>;
-              })}
+              {(ingredientes ? ingredientes : burger.ingredients.split(',').map(i => ({nombre: i.trim(), icono: '�️'}))).map((i, idx) => (
+                <li key={idx} className="w-full text-left break-words">{i.icono} {i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -67,7 +66,7 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
     <div className="absolute left-2 right-2 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-90 transition-all duration-500 delay-400 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-2">
       <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3 w-full flex flex-col">
         {/* Opción Simple */}
-        <div className="grid grid-cols-3 items-center gap-2 mb-2">
+  <div className="grid grid-cols-3 items-center gap-1 mb-1">
           <span className="text-white font-semibold text-xs font-resident text-left">Simple</span>
           <div className="flex items-center justify-center gap-1">
             <button 
@@ -87,7 +86,7 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
           <span className="text-green-400 font-bold text-xs font-resident text-right">${burger.prices.simple}</span>
         </div>
         {/* Opción Doble */}
-        <div className="grid grid-cols-3 items-center gap-2">
+  <div className="grid grid-cols-3 items-center gap-1">
           <span className="text-white font-semibold text-xs font-resident text-left">Doble</span>
           <div className="flex items-center justify-center gap-1">
             <button 
