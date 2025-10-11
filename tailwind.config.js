@@ -7,8 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'resident': ['Resident Evil Large', 'monospace'],
-        'custom': ['3724-font', 'serif'],
+        'resident': ['ResidentEvil', 'monospace'],
       }
     },
   },

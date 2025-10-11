@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
+import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import { obtenerPrecios } from './services/firebase';
 import { burgers } from './data/burgers';
@@ -97,17 +98,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black m-0 p-0">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black m-0 p-0 flex flex-col">
       <Header 
         onConfirmOrder={handleConfirmOrder}
         onDiscardOrder={handleDiscardOrder}
       />
-      <main className="gallery-container">
-        <Gallery 
-          ref={galleryRef}
-          onOrderChange={handleOrderChange}
-        />
-      </main>
+      <div className="flex-1 flex flex-col">
+        <Hero />
+        <main className="flex-1 gallery-container">
+          <Gallery 
+            ref={galleryRef}
+            onOrderChange={handleOrderChange}
+          />
+        </main>
+      </div>
     </div>
   );
 }

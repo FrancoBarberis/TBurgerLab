@@ -4,8 +4,8 @@ const Header = ({ onConfirmOrder, onDiscardOrder }) => {
   return (
     <header className="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm py-4 px-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-red-800 w-full">
       <div className="contenedor-titulo">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-custom text-red-500 drop-shadow-lg">
-          <span className="text-yellow-400">T-B</span>URGER<span className="text-yellow-400">.L</span>ABS
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl text-white drop-shadow-lg font-resident">
+          <span className="text-red-500">T-B</span>URGER<span className="text-red-500">.L</span>ABS
         </h1>
       </div>
       <div className="flex gap-3 lg:gap-4">
@@ -15,7 +15,7 @@ const Header = ({ onConfirmOrder, onDiscardOrder }) => {
         >
           <span className="hidden sm:inline">CONFIRMAR PEDIDO</span>
           <span className="sm:hidden">CONFIRMAR</span>
-          <i className="fas fa-shopping-cart"></i>
+          <i className="fas fa-check"></i>
         </button>
         <button 
           onClick={onDiscardOrder}

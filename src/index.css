@@ -3,21 +3,14 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: '3724-font';
-  src: url('/fonts/3724-font.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Resident Evil Large';
+  font-family: 'ResidentEvil';
   src: url('/fonts/Resident Evil Large.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'ResidentEvil', monospace, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -29,6 +22,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: 'ResidentEvil', monospace, sans-serif !important;
+}
+
+body {
+  font-family: 'ResidentEvil', monospace, sans-serif !important;
 }
 
 a {

@@ -23,7 +23,7 @@ export const burgers = [
     id: 'leon',
     name: 'Leon',
     backgroundImage: '/imgs/Leon.webp',
-    ingredients: 'Carne premium, queso suizo, bacon, cebolla grillada',
+    ingredients: 'CORREGIR',
     prices: {
       simple: 14500,
       doble: 16000
