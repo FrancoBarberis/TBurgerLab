@@ -36,7 +36,7 @@ const ParallaxText = ({ children, speed = 0.2, className = "", fadeOut = false }
   }, [speed, fadeOut]);
 
   return (
-    <div ref={textRef} className={`parallax-text ${className}`}>
+  <div ref={textRef} className={`parallax-text ${className}`}>
       {children}
     </div>
   );

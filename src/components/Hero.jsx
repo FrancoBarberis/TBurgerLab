@@ -39,6 +39,8 @@ const Hero = () => {
       
     {/* Overlay oscuro para mejorar legibilidad */}
   <div className="absolute inset-0 bg-black bg-opacity-60 sm:bg-opacity-40 z-5"></div>
+    {/* Gradiente inferior azul para mobile */}
+  <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#0a1020] via-[#0a1020]/80 to-transparent z-10 pointer-events-none sm:hidden"></div>
       
       <div className="sm:text-right text-center text-white drop-shadow-2xl sm:transform -translate-y-16 relative z-10 px-4 py-8 w-full">
         <ParallaxText speed={0.6} fadeOut={true} className="block">

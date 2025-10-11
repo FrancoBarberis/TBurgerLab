@@ -25,7 +25,7 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
   }));
 
   return (
-  <div className={`group relative flex-shrink-0 w-full h-[calc(100vh-6rem)] sm:w-40 sm:h-80 sm:hover:w-56 sm:hover:h-80 shadow-lg sm:hover:shadow-2xl sm:hover:z-20 border-0 m-0 transition-all duration-700 ease-in-out ${className}`}>
+  <div className={`group relative flex-shrink-0 w-full h-[calc(100vh-6rem)] sm:w-40 sm:h-80 sm:hover:w-56 sm:hover:h-80 shadow-lg sm:hover:shadow-2xl sm:hover:z-20 border-0 m-0 transition-all duration-700 ease-in-out ${className} shadow-[0_8px_32px_-8px_rgba(0,0,0,0.7)]`}>
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-700 brightness-125 group-hover:brightness-100 h-full w-full"
