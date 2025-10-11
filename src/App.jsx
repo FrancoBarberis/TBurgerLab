@@ -272,6 +272,7 @@ function App() {
             <Gallery 
               ref={galleryRef}
               onOrderChange={handleOrderChange}
+              order={order}
             />
           </ParallaxSection>
         </div>

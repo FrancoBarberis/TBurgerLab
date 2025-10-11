@@ -4,7 +4,7 @@ import ParallaxText from './ParallaxText';
 import FadeInElement from './FadeInElement';
 import { burgers } from '../data/burgers';
 
-const Gallery = forwardRef(({ onOrderChange }, ref) => {
+const Gallery = forwardRef(({ onOrderChange, order }, ref) => {
   const cardRefs = useRef({});
 
   const handleQuantityChange = (burgerId, type, quantity) => {
@@ -24,6 +24,8 @@ const Gallery = forwardRef(({ onOrderChange }, ref) => {
     resetAllQuantities
   }));
 
+  // Recibo el estado global 'order' como prop
+  // ...existing code...
   return (
     <div className="w-screen bg-black min-h-dvh flex flex-col items-center justify-center cursor-crosshair px-4 overflow-hidden relative pb-4">
       <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900 to-black opacity-80"></div>
@@ -37,14 +39,21 @@ const Gallery = forwardRef(({ onOrderChange }, ref) => {
         </FadeInElement>
         <FadeInElement>
           <div className="flex justify-center items-end gap-1">
-            {burgers.map((burger) => (
-              <BurgerCard
-                key={burger.id}
-                burger={burger}
-                ref={el => cardRefs.current[burger.id] = el}
-                onQuantityChange={handleQuantityChange}
-              />
-            ))}
+            {burgers.map((burger) => {
+              const quantities = {
+                simple: (order[burger.id]?.simple) || 0,
+                doble: (order[burger.id]?.doble) || 0
+              };
+              return (
+                <BurgerCard
+                  key={burger.id}
+                  burger={burger}
+                  quantities={quantities}
+                  ref={el => cardRefs.current[burger.id] = el}
+                  onQuantityChange={handleQuantityChange}
+                />
+              );
+            })}
           </div>
         </FadeInElement>
       </div>

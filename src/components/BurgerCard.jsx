@@ -1,34 +1,24 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
 
-const BurgerCard = forwardRef(({ burger, onQuantityChange }, ref) => {
-  const [quantities, setQuantities] = useState({
-    simple: 0,
-    doble: 0
-  });
-
-
-
+const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities }, ref) => {
+  // Recibo quantities como prop
+  // El control visual usa quantities directamente
   const handleQuantityChange = (type, increment) => {
-    const newQuantities = { ...quantities };
+    let newQuantity = quantities[type];
     if (increment) {
-      newQuantities[type] += 1;
-    } else if (newQuantities[type] > 0) {
-      newQuantities[type] -= 1;
+      newQuantity += 1;
+    } else if (newQuantity > 0) {
+      newQuantity -= 1;
     }
-    setQuantities(newQuantities);
-    onQuantityChange(burger.id, type, newQuantities[type]);
-  };
-
-  const resetQuantities = () => {
-    setQuantities({ simple: 0, doble: 0 });
-    onQuantityChange(burger.id, 'simple', 0);
-    onQuantityChange(burger.id, 'doble', 0);
-
+    onQuantityChange(burger.id, type, newQuantity);
   };
 
   // Exponer la función reset para el componente padre
   useImperativeHandle(ref, () => ({
-    resetQuantities
+    resetQuantities: () => {
+      onQuantityChange(burger.id, 'simple', 0);
+      onQuantityChange(burger.id, 'doble', 0);
+    }
   }));
 
   return (
