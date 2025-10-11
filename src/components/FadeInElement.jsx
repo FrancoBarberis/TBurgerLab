@@ -11,8 +11,8 @@ const FadeInElement = ({ children, className = "" }) => {
       const windowHeight = window.innerHeight;
       
       // Los elementos de la galería aparecen gradualmente - sincronizado con parallax
-      const fadeStart = windowHeight * 0.25; // Comienza cuando el parallax está activo
-      const fadeEnd = windowHeight * 0.55; // Completamente visible cuando está bien posicionado
+  const fadeStart = windowHeight * 0.25; // Comienza cuando el parallax está activo
+  const fadeEnd = windowHeight * 1.2; // Fade aún más lento y prolongado
       
       let opacity = 0;
       if (scrolled > fadeStart) {

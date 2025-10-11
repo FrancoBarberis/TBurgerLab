@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-screen h-dvh flex items-center justify-end pr-16 pointer-events-none relative overflow-hidden">
+  <div className="w-screen h-dvh flex items-center justify-end pr-16 pointer-events-none relative overflow-hidden top-0 left-0">
       {/* Video de fondo */}
       <video 
         ref={videoRef}
