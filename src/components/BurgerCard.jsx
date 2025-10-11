@@ -11,7 +11,7 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
       newQuantity += 1;
     } else if (newQuantity > 0) {
       newQuantity -= 1;
-    }
+            }
     onQuantityChange(burger.id, type, newQuantity);
   };
 
@@ -38,9 +38,9 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
       />
 
       {/* Content */}
-      <div className="relative z-10 p-4 h-full flex flex-col">
+  <div className="relative z-10 p-4 h-full flex flex-col text-center">
         {/* Título e ingredientes siempre visibles en móvil, solo en hover en desktop */}
-      <div className="w-full flex flex-col items-center justify-center text-center sm:hidden h-full">
+  <div className="w-full flex flex-col text-center sm:hidden h-full">
         <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
           {burger.name}
         </h3>
@@ -48,20 +48,24 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange, quantities, className
           <IngredientesTypedVertical ingredientes={burger.ingredients.split(',').map(i => i.trim())} />
         </div>
       </div>
-    <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:transform sm:translate-x-8 sm:group-hover:translate-x-0 flex-1 flex items-center justify-center sm:block hidden">
-          <div className="w-72 text-center mx-auto">
-            <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
+  <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:block hidden w-full text-center">
+          <div className="w-56 mx-auto flex flex-col items-start text-left">
+            <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase text-left w-full">
               {burger.name}
             </h3>
-            <p className="text-gray-100 text-sm mb-6 leading-relaxed font-resident">
-              {burger.ingredients}
-            </p>
+            <ul className="text-gray-100 text-xs mb-6 leading-relaxed font-resident flex flex-col items-start gap-1 w-full text-left">
+              {burger.ingredients.split(',').map((i, idx) => {
+                const texto = i.trim();
+                const mayuscula = texto.charAt(0).toUpperCase() + texto.slice(1);
+                return <li key={idx} className="w-full text-left break-words">• {mayuscula}</li>;
+              })}
+            </ul>
           </div>
         </div>
       </div>
     {/* Controles: solo en hover en desktop, abajo en ambas vistas */}
     <div className="absolute left-2 right-2 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-90 transition-all duration-500 delay-400 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-2">
-      <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3">
+      <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3 w-full flex flex-col">
         {/* Opción Simple */}
         <div className="grid grid-cols-3 items-center gap-2 mb-2">
           <span className="text-white font-semibold text-xs font-resident text-left">Simple</span>

@@ -37,7 +37,7 @@ const Gallery = forwardRef(({ onOrderChange, order }, ref) => {
             </h2>
           </ParallaxText>
         </FadeInElement>
-          <div className="grid grid-cols-1 w-full gap-0 sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center">
+          <div className="grid grid-cols-1 w-full gap-0 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
           {burgers.map((burger) => {
             const quantities = {
               simple: (order[burger.id]?.simple) || 0,
