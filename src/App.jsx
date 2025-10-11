@@ -98,20 +98,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black m-0 p-0 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black m-0 p-0">
       <Header 
         onConfirmOrder={handleConfirmOrder}
         onDiscardOrder={handleDiscardOrder}
       />
-      <div className="flex-1 flex flex-col">
-        <Hero />
-        <main className="flex-1 gallery-container">
-          <Gallery 
-            ref={galleryRef}
-            onOrderChange={handleOrderChange}
-          />
-        </main>
-      </div>
+      <Hero />
+      <Gallery 
+        ref={galleryRef}
+        onOrderChange={handleOrderChange}
+      />
     </div>
   );
 }

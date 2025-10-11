@@ -60,43 +60,47 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange }, ref) => {
       <div className="absolute bottom-0 left-0 right-0 opacity-0 group-hover:opacity-80 transition-all duration-500 delay-400 transform translate-y-8 group-hover:translate-y-0 z-20">
         {/* Opción Simple */}
         <div className="bg-black bg-opacity-60 p-1 rounded-t backdrop-blur-sm">
-          <div className="flex items-center gap-1">
-            <span className="text-white font-semibold text-xs font-resident flex-shrink-0">Simple</span>
-            <button 
-              onClick={() => handleQuantityChange('simple', false)}
-              className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident"
-            >
-              -
-            </button>
-            <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.simple}</span>
-            <button 
-              onClick={() => handleQuantityChange('simple', true)}
-              className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident"
-            >
-              +
-            </button>
-            <span className="text-green-400 font-bold text-xs font-resident flex-shrink-0 ml-auto">${burger.prices.simple}</span>
+          <div className="flex items-center justify-between">
+            <span className="text-white font-semibold text-xs font-resident w-10">Simple</span>
+            <div className="flex items-center gap-1">
+              <button 
+                onClick={() => handleQuantityChange('simple', false)}
+                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              >
+                -
+              </button>
+              <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.simple}</span>
+              <button 
+                onClick={() => handleQuantityChange('simple', true)}
+                className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              >
+                +
+              </button>
+            </div>
+            <span className="text-green-400 font-bold text-xs font-resident w-12 text-right">${burger.prices.simple}</span>
           </div>
         </div>
         
         {/* Opción Doble */}
         <div className="bg-black bg-opacity-60 p-1 rounded-b backdrop-blur-sm">
-          <div className="flex items-center gap-1">
-            <span className="text-white font-semibold text-xs font-resident flex-shrink-0">Doble</span>
-            <button 
-              onClick={() => handleQuantityChange('doble', false)}
-              className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident"
-            >
-              -
-            </button>
-            <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.doble}</span>
-            <button 
-              onClick={() => handleQuantityChange('doble', true)}
-              className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident"
-            >
-              +
-            </button>
-            <span className="text-green-400 font-bold text-xs font-resident flex-shrink-0 ml-auto">${burger.prices.doble}</span>
+          <div className="flex items-center justify-between">
+            <span className="text-white font-semibold text-xs font-resident w-10">Doble</span>
+            <div className="flex items-center gap-1">
+              <button 
+                onClick={() => handleQuantityChange('doble', false)}
+                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              >
+                -
+              </button>
+              <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.doble}</span>
+              <button 
+                onClick={() => handleQuantityChange('doble', true)}
+                className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              >
+                +
+              </button>
+            </div>
+            <span className="text-green-400 font-bold text-xs font-resident w-12 text-right">${burger.prices.doble}</span>
           </div>
         </div>
       </div>

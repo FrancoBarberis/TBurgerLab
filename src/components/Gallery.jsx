@@ -23,8 +23,11 @@ const Gallery = forwardRef(({ onOrderChange }, ref) => {
   }));
 
   return (
-    <div className="flex-1 flex items-end justify-center w-full m-0 p-0 mb-8 cursor-crosshair overflow-visible">
-      <div className="flex justify-center items-stretch px-4 max-w-[95vw] overflow-hidden">
+    <div className="w-screen bg-black h-screen flex flex-col items-center justify-center cursor-crosshair px-4 overflow-hidden">
+      <h2 className="text-4xl font-resident text-red-400 mb-8 uppercase drop-shadow-2xl">
+        COMBOS
+      </h2>
+      <div className="flex justify-center items-end">
         {burgers.map((burger) => (
           <BurgerCard
             key={burger.id}
