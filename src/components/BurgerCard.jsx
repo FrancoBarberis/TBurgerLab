@@ -65,14 +65,14 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange }, ref) => {
             <div className="flex items-center gap-1">
               <button 
                 onClick={() => handleQuantityChange('simple', false)}
-                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+                className="bg-gray-700 hover:bg-gray-800 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none border border-gray-600"
               >
                 -
               </button>
               <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.simple}</span>
               <button 
                 onClick={() => handleQuantityChange('simple', true)}
-                className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none border border-red-500"
               >
                 +
               </button>
@@ -88,14 +88,14 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange }, ref) => {
             <div className="flex items-center gap-1">
               <button 
                 onClick={() => handleQuantityChange('doble', false)}
-                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+                className="bg-gray-700 hover:bg-gray-800 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none border border-gray-600"
               >
                 -
               </button>
               <span className="text-white font-semibold w-3 text-center text-xs font-resident">{quantities.doble}</span>
               <button 
                 onClick={() => handleQuantityChange('doble', true)}
-                className="bg-green-600 hover:bg-green-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+                className="bg-red-600 hover:bg-red-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none border border-red-500"
               >
                 +
               </button>

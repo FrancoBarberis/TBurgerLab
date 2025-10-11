@@ -11,8 +11,8 @@ const FadeInElement = ({ children, className = "" }) => {
       const windowHeight = window.innerHeight;
       
       // Los elementos de la galería aparecen gradualmente
-      const fadeStart = windowHeight * 0.4; // Comienza a aparecer al 40% del scroll
-      const fadeEnd = windowHeight * 0.9; // Completamente visible al 90%
+      const fadeStart = windowHeight * 0.2; // Comienza a aparecer al 20% del scroll
+      const fadeEnd = windowHeight * 0.6; // Completamente visible al 60%
       
       let opacity = 0;
       if (scrolled > fadeStart) {

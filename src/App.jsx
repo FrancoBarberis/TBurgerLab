@@ -3,12 +3,14 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import ParallaxSection from './components/ParallaxSection';
+import LoadingScreen from './components/LoadingScreen';
 import { obtenerPrecios } from './services/firebase';
 import { burgers } from './data/burgers';
 
 function App() {
   const [order, setOrder] = useState({});
   const [prices, setPrices] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const galleryRef = useRef();
 
   useEffect(() => {
@@ -99,21 +101,26 @@ function App() {
   };
 
   return (
-    <div className="bg-black m-0 p-0 overflow-x-hidden">
-      <Header 
-        onConfirmOrder={handleConfirmOrder}
-        onDiscardOrder={handleDiscardOrder}
-      />
-      <ParallaxSection speed={0.2} className="relative">
-        <Hero />
-      </ParallaxSection>
-      <ParallaxSection speed={0.5} isGallery={true} className="relative z-10 -mt-20">
-        <Gallery 
-          ref={galleryRef}
-          onOrderChange={handleOrderChange}
+    <>
+      {isLoading && <LoadingScreen onLoadComplete={() => setIsLoading(false)} />}
+      <div className={`bg-black m-0 p-0 w-screen overflow-x-hidden transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Header 
+          onConfirmOrder={handleConfirmOrder}
+          onDiscardOrder={handleDiscardOrder}
         />
-      </ParallaxSection>
-    </div>
+        <div className="pt-0 w-screen">
+          <ParallaxSection speed={0.4} className="relative w-screen">
+            <Hero />
+          </ParallaxSection>
+          <ParallaxSection speed={0.8} isGallery={true} className="relative z-10 -mt-40 w-screen">
+            <Gallery 
+              ref={galleryRef}
+              onOrderChange={handleOrderChange}
+            />
+          </ParallaxSection>
+        </div>
+      </div>
+    </>
   );
 }
 
