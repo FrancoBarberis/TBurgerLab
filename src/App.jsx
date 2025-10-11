@@ -13,7 +13,6 @@ function App() {
   const [prices, setPrices] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const galleryRef = useRef();
-  
   // Estados del modal
   const [modal, setModal] = useState({
     isOpen: false,
@@ -24,9 +23,82 @@ function App() {
     inputValue: '',
     placeholder: ''
   });
-
   // Estado separado para el valor del input del modal
   const [modalInputValue, setModalInputValue] = useState('');
+
+  // Calcula el resumen del pedido desde el estado global
+  const getOrderItems = () => {
+    const items = [];
+    Object.entries(order).forEach(([burgerId, burgerOrder]) => {
+      Object.entries(burgerOrder || {}).forEach(([type, quantity]) => {
+        if (quantity > 0) {
+          const burger = burgers.find(b => b.id === burgerId);
+          if (burger) {
+            items.push({
+              burgerId,
+              name: burger.name,
+              type,
+              quantity,
+              price: prices[burger.name] ? prices[burger.name][type] : burger.prices[type]
+            });
+          }
+        }
+      });
+    });
+    return items;
+  };
+
+  // Sincroniza el modal de resumen con el estado global 'order'
+  useEffect(() => {
+    if (modal.isOpen && modal.type === 'resumen') {
+      const orderItems = getOrderItems();
+      if (orderItems.length === 0) {
+        setModal(prev => ({ ...prev, isOpen: false }));
+      } else {
+        setModal(prev => ({ ...prev, resumen: orderItems }));
+      }
+    }
+  }, [order]);
+
+  // Handlers para modificar cantidades y eliminar productos en el resumen
+  const handleResumenChange = {
+    incrementar: (burgerId, type) => {
+      setOrder(prev => ({
+        ...prev,
+        [burgerId]: {
+          ...prev[burgerId],
+          [type]: prev[burgerId][type] + 1
+        }
+      }));
+    },
+    decrementar: (burgerId, type) => {
+      setOrder(prev => {
+        const nuevo = { ...prev };
+        if (nuevo[burgerId] && nuevo[burgerId][type] > 1) {
+          nuevo[burgerId][type] = nuevo[burgerId][type] - 1;
+        } else if (nuevo[burgerId] && nuevo[burgerId][type] === 1) {
+          delete nuevo[burgerId][type];
+          if (Object.keys(nuevo[burgerId]).length === 0) {
+            delete nuevo[burgerId];
+          }
+        }
+        return nuevo;
+      });
+    },
+    eliminar: (burgerId, type) => {
+      setOrder(prev => {
+        const nuevo = { ...prev };
+        if (nuevo[burgerId]) {
+          delete nuevo[burgerId][type];
+          if (Object.keys(nuevo[burgerId]).length === 0) {
+            delete nuevo[burgerId];
+          }
+        }
+        return nuevo;
+      });
+    }
+  };
+  // (Eliminadas declaraciones duplicadas de estado y referencia)
 
   useEffect(() => {
     const loadPrices = async () => {
@@ -131,53 +203,41 @@ function App() {
   };
 
   const handleConfirmOrder = () => {
-    const orderItems = [];
-    
-    Object.entries(order).forEach(([burgerId, burgerOrder]) => {
-      Object.entries(burgerOrder || {}).forEach(([type, quantity]) => {
-        if (quantity > 0) {
-          const burger = burgers.find(b => b.id === burgerId);
-          if (burger) {
-            orderItems.push({
-              name: burger.name,
-              type,
-              quantity,
-              price: prices[burger.name] ? prices[burger.name][type] : burger.prices[type]
-            });
-          }
-        }
-      });
-    });
-
+    const orderItems = getOrderItems();
     if (orderItems.length === 0) {
       showAlert("No has seleccionado ningún producto.", "Pedido Vacío");
       return;
     }
-
-    showPrompt(
-      "Para procesar tu pedido, necesitamos tu dirección de envío:",
-      "Ej: Av. Corrientes 1234, CABA",
-      (direccion) => {
-        const numeroWhatsApp = "5491171545860";
-        let mensajeHamburguesas = "";
-        
-        orderItems.forEach(item => {
-          mensajeHamburguesas += `${item.name} (${item.type}) x ${item.quantity}\n`;
-        });
-
-        const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-        try {
-          window.open(urlWhatsApp, "_blank");
-          showAlert("Tu pedido se ha procesado correctamente. Te redirigimos a WhatsApp.", "Pedido Enviado");
-        } catch (error) {
-          showAlert("Ocurrió un error al intentar redirigir a WhatsApp. Por favor, inténtalo nuevamente.", "Error de Conexión");
-          console.error(error);
-        }
-      },
-      "Dirección de Envío"
-    );
+    setModal({
+      isOpen: true,
+      type: 'resumen',
+      title: 'Resumen de Pedido',
+      resumen: orderItems,
+      onResumenChange: handleResumenChange,
+      onConfirm: () => {
+        showPrompt(
+          "Para procesar tu pedido, necesitamos tu dirección de envío:",
+          "Ej: Av. Corrientes 1234, CABA",
+          (direccion) => {
+            const numeroWhatsApp = "5491171545860";
+            let mensajeHamburguesas = "";
+            getOrderItems().forEach(item => {
+              mensajeHamburguesas += `${item.name} (${item.type}) x ${item.quantity}\n`;
+            });
+            const mensaje = `Hola, quiero confirmar mi pedido. Mi dirección de envío es: ${direccion}\n\nHamburguesas elegidas:\n${mensajeHamburguesas}`;
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            try {
+              window.open(urlWhatsApp, "_blank");
+              showAlert("Tu pedido se ha procesado correctamente. Te redirigimos a WhatsApp.", "Pedido Enviado");
+            } catch (error) {
+              showAlert("Ocurrió un error al intentar redirigir a WhatsApp. Por favor, inténtalo nuevamente.", "Error de Conexión");
+              console.error(error);
+            }
+          },
+          "Dirección de Envío"
+        );
+      }
+    });
   };
 
   const handleInputChange = (value) => {
@@ -194,7 +254,9 @@ function App() {
   };
 
   return (
+
     <>
+
       {isLoading && <LoadingScreen onLoadComplete={() => setIsLoading(false)} />}
       <div className={`bg-black m-0 p-0 w-screen overflow-x-hidden transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Header 
@@ -224,6 +286,8 @@ function App() {
         placeholder={modal.placeholder}
         inputValue={modalInputValue}
         onInputChange={handleInputChange}
+        resumen={modal.resumen}
+        onResumenChange={modal.onResumenChange}
       />
     </>
   );
