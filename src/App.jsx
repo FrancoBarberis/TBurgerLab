@@ -5,7 +5,7 @@ import Gallery from './components/Gallery';
 import ParallaxSection from './components/ParallaxSection';
 import LoadingScreen from './components/LoadingScreen';
 import Modal from './components/Modal';
-import { obtenerPrecios } from './services/firebase';
+import { obtenerPreciosRealtime } from './services/firebase';
 import { burgers } from './data/burgers';
 
 function App() {
@@ -101,18 +101,10 @@ function App() {
   // (Eliminadas declaraciones duplicadas de estado y referencia)
 
   useEffect(() => {
-    const loadPrices = async () => {
-      try {
-        const firebasePrices = await obtenerPrecios();
-        if (firebasePrices) {
-          setPrices(firebasePrices);
-        }
-      } catch (error) {
-        console.error('Error al cargar precios:', error);
-      }
-    };
-    
-    loadPrices();
+    const unsubscribe = obtenerPreciosRealtime((firebasePrices) => {
+      setPrices(firebasePrices);
+    });
+    return () => unsubscribe();
   }, []);
 
   const handleOrderChange = (burgerId, type, quantity) => {
@@ -273,6 +265,7 @@ function App() {
               ref={galleryRef}
               onOrderChange={handleOrderChange}
               order={order}
+              prices={prices}
             />
           </ParallaxSection>
         </div>

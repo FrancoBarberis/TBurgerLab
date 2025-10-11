@@ -1,45 +1,56 @@
-// Importa Firebase y los módulos necesarios
+// Función para escuchar precios en tiempo real desde Firestore
+export function obtenerPreciosRealtime(callback) {
+  const preciosRef = collection(db, "precios");
+  return onSnapshot(preciosRef, (snapshot) => {
+    const precios = {};
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      precios[data.nombre] = {
+        simple: data.simple,
+        doble: data.doble
+      };
+    });
+    callback(precios);
+  });
+}
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs, onSnapshot } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Configuración de Firebase (reemplaza con tus credenciales)
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAY9eSy7SfUwP0bGjSbBnHH2l-RVw0lQPc",
   authDomain: "t-burgerlabs.firebaseapp.com",
   databaseURL: "https://t-burgerlabs-default-rtdb.firebaseio.com",
   projectId: "t-burgerlabs",
-  storageBucket: "t-burgerlabs.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:0987654321abcdefg",
-  measurementId: "G-1234567890"
+  storageBucket: "t-burgerlabs.firebasestorage.app",
+  messagingSenderId: "519691492104",
+  appId: "1:519691492104:web:e88d900e37a73f461eaabd",
+  measurementId: "G-8M0X70MCW6"
 };
 
-// Inicializa Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const analytics = getAnalytics(app);
 
-// Función para obtener precios desde Firebase
-export const obtenerPrecios = async () => {
-  try {
-    const snapshot = await get(ref(db, "precios"));
-    if (snapshot.exists()) {
-      return snapshot.val();
-    } else {
-      console.error("No se encontraron precios en la base de datos.");
-      return null;
-    }
-  } catch (error) {
-    console.error("Error al obtener precios:", error);
-    return null;
-  }
-};
+// Inicializa Firestore
+const db = getFirestore(app);
 
-// Función para actualizar precios en Firebase
-export const actualizarPrecios = async (nuevosPrecios) => {
-  try {
-    await set(ref(db, "precios"), nuevosPrecios);
-    console.log("Precios actualizados correctamente.");
-  } catch (error) {
-    console.error("Error al actualizar precios:", error);
-  }
-};
+// Función para obtener precios desde Firestore
+export async function obtenerPrecios() {
+  const preciosRef = collection(db, "precios");
+  const snapshot = await getDocs(preciosRef);
+  const precios = {};
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    precios[data.nombre] = {
+      simple: data.simple,
+      doble: data.doble
+    };
+  });
+  return precios;
+}

@@ -4,7 +4,7 @@ import ParallaxText from './ParallaxText';
 import FadeInElement from './FadeInElement';
 import { burgers } from '../data/burgers';
 
-const Gallery = forwardRef(({ onOrderChange, order }, ref) => {
+const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
   const cardRefs = useRef({});
 
   const handleQuantityChange = (burgerId, type, quantity) => {
@@ -78,10 +78,12 @@ const Gallery = forwardRef(({ onOrderChange, order }, ref) => {
                 icono: found ? found.icon : '🍽️'
               };
             });
+            // Usar precios de Firebase si existen
+            const preciosActualizados = prices && prices[burger.name] ? prices[burger.name] : burger.prices;
             return (
               <BurgerCard
                 key={burger.id}
-                burger={burger}
+                burger={{ ...burger, prices: preciosActualizados }}
                 ingredientes={ingredientes}
                 quantities={quantities}
                 ref={el => cardRefs.current[burger.id] = el}
@@ -92,8 +94,8 @@ const Gallery = forwardRef(({ onOrderChange, order }, ref) => {
           })}
         </div>
       </div>
-      <div className="w-full flex justify-center mt-4">
-  <p className="text-gray-300 text-xs font-resident text-center bg-black bg-opacity-60 rounded px-4 py-2 max-w-md">Todos los combos incluyen papas</p>
+      <div className="w-full flex justify-center mt-4 mb-8 relative z-20">
+  <p className="text-gray-100 text-xs font-resident text-center max-w-md shadow-none">Todos los combos incluyen papas</p>
       </div>
     </div>
   );

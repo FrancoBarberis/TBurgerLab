@@ -23,7 +23,7 @@ export const burgers = [
     id: 'leon',
     name: 'Leon',
     backgroundImage: '/imgs/Leon.webp',
-    ingredients: 'CORREGIR',
+    ingredients: 'Cheddar, lechuga, tomate, huevo frito',
     prices: {
       simple: 14500,
       doble: 16000
@@ -40,7 +40,7 @@ export const burgers = [
     }
   },
   {
-    id: 'reinaRoja',
+    id: 'ReinaRoja',
     name: 'Reina Roja',
     backgroundImage: '/imgs/ReinaRoja.webp',
     ingredients: 'Cheddar o dambo, cebolla caramelizada, rúcula, barbacoa',
@@ -50,7 +50,7 @@ export const burgers = [
     }
   },
   {
-    id: 'bow',
+    id: 'BOW',
     name: 'B.O.W.',
     backgroundImage: '/imgs/Ustanak.webp',
     ingredients: 'Pan negro/de papa, queso crema, queso parmesano, salsa de mostaza con miel, morrón asado',
