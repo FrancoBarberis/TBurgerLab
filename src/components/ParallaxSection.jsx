@@ -11,8 +11,8 @@ const ParallaxSection = ({ children, speed = 0.5, className = "", isGallery = fa
       const windowHeight = window.innerHeight;
       
       if (isGallery) {
-        // Para la galería, hacer que suba desde abajo
-        const rate = Math.max(0, (windowHeight - scrolled) * speed);
+        // Para la galería, hacer que suba desde abajo más dramáticamente
+        const rate = Math.max(-windowHeight * 0.5, (windowHeight - scrolled * 1.5) * speed);
         sectionRef.current.style.transform = `translateY(${rate}px)`;
       } else {
         // Para hero, parallax normal

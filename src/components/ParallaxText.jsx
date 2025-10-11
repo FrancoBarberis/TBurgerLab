@@ -14,9 +14,9 @@ const ParallaxText = ({ children, speed = 0.2, className = "", fadeOut = false }
       // Calcular opacity basado en el scroll
       let opacity = 1;
       if (fadeOut) {
-        // Los textos del hero se desvanecen al hacer scroll hacia abajo
-        const fadeStart = windowHeight * 0.3; // Comienza a desvanecer al 30% del scroll
-        const fadeEnd = windowHeight * 0.8; // Completamente invisible al 80%
+        // Los textos del hero se desvanecen al hacer scroll hacia abajo - sincronizado con parallax
+        const fadeStart = windowHeight * 0.05; // Comienza a desvanecer muy temprano
+        const fadeEnd = windowHeight * 0.35; // Completamente invisible antes que aparezca la galería
         
         if (scrolled > fadeStart) {
           const fadeProgress = (scrolled - fadeStart) / (fadeEnd - fadeStart);

@@ -25,11 +25,11 @@ const Gallery = forwardRef(({ onOrderChange }, ref) => {
   }));
 
   return (
-    <div className="w-screen bg-black min-h-screen flex flex-col items-center justify-start cursor-crosshair px-4 overflow-hidden relative pb-16">
+    <div className="w-screen bg-black min-h-dvh flex flex-col items-center justify-center cursor-crosshair px-4 overflow-hidden relative pb-4">
       <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900 to-black opacity-80"></div>
-      <div className="relative z-10 flex flex-col items-center pt-16 mb-16">
-        <FadeInElement className="mb-8">
-          <ParallaxText speed={0.1}>
+      <div className="relative z-10 flex flex-col items-center pt-20 mb-4">
+        <FadeInElement className="mb-12">
+          <ParallaxText speed={0.05}>
             <h2 className="text-4xl font-resident text-red-400 uppercase drop-shadow-2xl">
               COMBOS
             </h2>

@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-end pr-16 pointer-events-none relative overflow-hidden mt-20">
+    <div className="w-screen h-dvh flex items-center justify-end pr-16 pointer-events-none relative overflow-hidden">
       {/* Video de fondo */}
       <video 
         ref={videoRef}
@@ -29,12 +29,13 @@ const Hero = () => {
         preload="auto"
         className="absolute w-full h-full object-cover z-0"
         style={{ 
-          top: '-80px', 
+          top: '0', 
           left: '0',
           width: '100vw',
-          height: 'calc(100vh + 80px)',
+          height: '100dvh',
           minWidth: '100vw',
-          minHeight: 'calc(100vh + 80px)'
+          minHeight: '100dvh',
+          objectFit: 'cover'
         }}
       >
         <source src="/vids/LeonVSChris.mp4" type="video/mp4" />
