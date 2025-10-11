@@ -25,6 +25,9 @@ function App() {
     placeholder: ''
   });
 
+  // Estado separado para el valor del input del modal
+  const [modalInputValue, setModalInputValue] = useState('');
+
   useEffect(() => {
     const loadPrices = async () => {
       try {
@@ -83,38 +86,47 @@ function App() {
     });
   };
 
-  const showPrompt = (message, placeholder, onConfirm, title = 'Información Requerida') => {
+  const showPrompt = (message, placeholder, onSuccessCallback, title = 'Información Requerida') => {
+    const validateAndProcess = (value) => {
+      const direccion = value.trim();
+      console.log('Validando dirección:', direccion);
+      const hasNumber = /[0-9]/.test(direccion);
+      console.log('¿Tiene número?', hasNumber);
+      if (direccion && hasNumber) {
+        console.log('Dirección válida, enviando a WhatsApp:', direccion);
+        onSuccessCallback(direccion);
+        setModal({ ...modal, isOpen: false });
+        setModalInputValue('');
+      } else {
+        console.log('Dirección inválida, reabriendo modal:', direccion);
+        setModal({
+          isOpen: true,
+          type: 'alert',
+          title: 'Dirección Inválida',
+          message: 'Por favor, ingrese una dirección válida (debe contener al menos un número).',
+          onConfirm: () => {
+            setModal({
+              isOpen: true,
+              type: 'prompt',
+              title,
+              message,
+              placeholder,
+              inputValue: direccion,
+              onConfirm: (nuevoValor) => validateAndProcess(nuevoValor)
+            });
+          }
+        });
+      }
+    };
+
     setModal({
       isOpen: true,
       type: 'prompt',
       title,
       message,
       placeholder,
-      inputValue: '',
-      onConfirm: () => {
-        const direccion = modal.inputValue.trim();
-        // Validar: al menos 1 mayúscula, 1 minúscula y 1 número
-        const hasUppercase = /[A-Z]/.test(direccion);
-        const hasLowercase = /[a-z]/.test(direccion);
-        const hasNumber = /[0-9]/.test(direccion);
-        
-        if (direccion && hasUppercase && hasLowercase && hasNumber) {
-          onConfirm(modal.inputValue);
-          setModal({ ...modal, isOpen: false });
-        } else {
-          // Mostrar error y luego reabrir el prompt
-          setModal({
-            isOpen: true,
-            type: 'alert',
-            title: 'Dirección Inválida',
-            message: 'Por favor, ingrese una dirección válida (debe contener al menos una mayúscula, una minúscula y un número).',
-            onConfirm: () => {
-              // Reabrir el prompt original
-              showPrompt(message, placeholder, onConfirm, title);
-            }
-          });
-        }
-      }
+  inputValue: modalInputValue,
+  onConfirm: (valor) => validateAndProcess(valor)
     });
   };
 
@@ -169,6 +181,8 @@ function App() {
   };
 
   const handleInputChange = (value) => {
+    console.log('Nuevo valor:', value);
+    setModalInputValue(value);
     setModal(prev => ({ ...prev, inputValue: value }));
   };
 
@@ -208,7 +222,7 @@ function App() {
         message={modal.message}
         type={modal.type}
         placeholder={modal.placeholder}
-        inputValue={modal.inputValue}
+        inputValue={modalInputValue}
         onInputChange={handleInputChange}
       />
     </>

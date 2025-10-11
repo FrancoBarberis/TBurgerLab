@@ -60,7 +60,7 @@ const BurgerCard = forwardRef(({ burger, onQuantityChange }, ref) => {
       
       {/* Controls - Posicionados absolutamente en el fondo */}
       <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-90 transition-all duration-500 delay-400 transform translate-y-4 group-hover:translate-y-0 z-20">
-        <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3 border border-gray-700">
+  <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3">
           {/* Opción Simple */}
           <div className="grid grid-cols-3 items-center gap-2 mb-2">
             <span className="text-white font-semibold text-xs font-resident text-left">Simple</span>

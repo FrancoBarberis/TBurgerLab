@@ -16,7 +16,11 @@ const Modal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onConfirm) {
-      onConfirm();
+      if (type === 'prompt') {
+        onConfirm(inputValue);
+      } else {
+        onConfirm();
+      }
     }
   };
 

@@ -26,7 +26,7 @@ const Hero = () => {
         muted 
         loop 
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute w-full h-full object-cover z-0"
         style={{ 
           top: '0', 

@@ -36,8 +36,8 @@ const LoadingScreen = ({ onLoadComplete }) => {
     // Precargar video
     const video = document.createElement('video');
     video.src = '/vids/LeonVSChris.mp4';
-    video.preload = 'auto';
-    video.oncanplaythrough = updateProgress;
+    video.preload = 'metadata';
+    video.onloadedmetadata = updateProgress;
     video.onerror = updateProgress;
 
     // Precargar imágenes
