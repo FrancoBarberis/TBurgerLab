@@ -23,14 +23,9 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
   }));
 
   return (
-    // GRADIENTE CENTRAL GALERIA
-    <div className="w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4 bg-transparent>">
-      {/* GRADIENTE SUPERIOR GALERIA */}
-      <div className="absolute top-0 left-0 w-full h-[40rem] bg-transparent z-10 pointer-events-none"></div>
-      {/* Gradiente inferior para unir con el fondo negro */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-[#0a1020] to-transparent z-10 pointer-events-none"></div>
-      <div className=" sm:bg-[#0a1020] lg:bg-gradient-to-t from-black via-[#0a1020] z-10 flex flex-col md:pt-10 lg:mb-2 w-full sm:pt-24">
-        <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12">
+    // GALLERY CONTAINER
+    <div className="bg-[#0a1020]  w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4>">
+      <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12">
               COMBOS
         </h2>
         {/* CONTENEDOR CARDS */}
@@ -87,7 +82,6 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
             );
           })}
         </div>
-      </div>
       <div className="w-full flex justify-center mt-4 mb-20 relative z-20">
         <p className="text-gray-100 text-3xl  font-extralight 3724-font text-center max-w-md shadow-none cursor-default">
           Todos los combos incluyen papas
