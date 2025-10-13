@@ -40,18 +40,19 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
 
       {/* Content */}
   <div className="relative z-10 p-4 h-full flex flex-col text-center">
-        {/* Título e ingredientes siempre visibles en móvil, solo en hover en desktop */}
   <div className="w-full flex flex-col text-center sm:hidden h-full">
-        <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase">
+    {/* CARD MOBILE */}
+        <h3 className="text-4xl 3724-font text-red-400 mb-4 drop-shadow-2xl uppercase">
           {burger.name}
         </h3>
         <div className="flex-1 flex items-center justify-center w-full">
           <IngredientesTypedVertical ingredientes={ingredientes ? ingredientes.map(i => `${i.icono} ${i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)}`) : burger.ingredients.split(',').map(i => i.trim())} backSpeed={120} />
         </div>
       </div>
+      {/* CARD DESKTOP */}
   <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:block hidden w-full text-center">
           <div className="w-56 mx-auto flex flex-col items-start text-left">
-            <h3 className="text-2xl font-resident text-red-400 mb-4 drop-shadow-2xl uppercase text-left w-full">
+            <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 drop-shadow-2xl uppercase text-left w-full">
               {burger.name}
             </h3>
             <ul className="text-gray-100 text-xs mb-6 leading-relaxed font-resident flex flex-col items-start gap-1 w-full text-left">
@@ -64,21 +65,21 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
       </div>
     {/* Controles: solo en hover en desktop, abajo en ambas vistas */}
     <div className="absolute left-2 right-2 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-90 transition-all duration-500 delay-400 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-2">
-      <div className="bg-black bg-opacity-75 rounded backdrop-blur-sm p-3 w-full flex flex-col">
+      <div className="bg-black bg-opacity-75 rounded-sm backdrop-blur-sm p-3 w-full flex flex-col">
         {/* Opción Simple */}
   <div className="grid grid-cols-3 items-center gap-1 mb-1">
-          <span className="text-white font-semibold text-xs font-resident text-left">Simple</span>
+          <span className="sm:text-3xl text-white font-semibold text-xl 3724-font text-left">Simple</span>
           <div className="flex items-center justify-center gap-1">
             <button 
               onClick={() => handleQuantityChange('simple', false)}
-              className="bg-gray-700 hover:bg-gray-800 text-white w-6 h-6 rounded flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              className="bg-gray-700 hover:bg-gray-800 text-white w-6 h-6 rounded-sm flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
             >
               -
             </button>
             <span className="text-white font-semibold w-6 text-center text-xs font-resident">{quantities.simple}</span>
             <button 
               onClick={() => handleQuantityChange('simple', true)}
-              className="bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              className="bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded-sm flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
             >
               +
             </button>
@@ -87,18 +88,18 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
         </div>
         {/* Opción Doble */}
   <div className="grid grid-cols-3 items-center gap-1">
-          <span className="text-white font-semibold text-xs font-resident text-left">Doble</span>
+          <span className="text-white font-semibold sm:text-3xl lg:text-xl 3724-font text-left">Doble</span>
           <div className="flex items-center justify-center gap-1">
             <button 
               onClick={() => handleQuantityChange('doble', false)}
-              className="bg-gray-700 hover:bg-gray-800 text-white w-6 h-6 rounded flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              className="bg-gray-700 hover:bg-gray-800 text-white w-6 h-6 rounded-sm flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
             >
               -
             </button>
             <span className="text-white font-semibold w-6 text-center text-xs font-resident">{quantities.doble}</span>
             <button 
               onClick={() => handleQuantityChange('doble', true)}
-              className="bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
+              className="bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded-sm flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none"
             >
               +
             </button>
