@@ -82,8 +82,12 @@ function App() {
         }
       },
       onConfirm: () => {
-        setDireccionModalOpen(true);
-        setModal({ ...modal, isOpen: false });
+        if (buildResumen().length === 0) {
+          setModal({ ...modal, isOpen: false });
+        } else {
+          setDireccionModalOpen(true);
+          setModal({ ...modal, isOpen: false });
+        }
       },
       onClose: () => setModal({ ...modal, isOpen: false })
     });
