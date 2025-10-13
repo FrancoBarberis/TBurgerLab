@@ -93,7 +93,7 @@ function App() {
                 <ParallaxSection speed={0.3} className="relative w-screen sm:bg-[#0a1020] lg:bg-black">
                   <Hero />
                 </ParallaxSection>
-                <ParallaxSection speed={0.6} isGallery={true} className="relative z-10 -mt-32 w-screen sm:bg-[#0a1020] lg:bg-black">
+                <ParallaxSection speed={0.6} isGallery={true} className="relative z-10 w-screen sm:bg-[#0a1020] lg:bg-black">
                   <Gallery 
                     ref={galleryRef}
                     onOrderChange={handleOrderChange}

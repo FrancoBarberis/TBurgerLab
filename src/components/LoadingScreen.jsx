@@ -56,9 +56,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
   if (isComplete) return null;
 
   return (
-    <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center w-screen overflow-hidden">
+    <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center h-screen w-screen overflow-hidden">
       <div className="text-center">
-        <h1 className="text-4xl font-resident text-white drop-shadow-lg mb-8">
+        <h1 className="text-4xl 3724-font text-white drop-shadow-lg mb-8">
           <span className="text-red-500">T-B</span>URGER<span className="text-red-500">.L</span>ABS
         </h1>
         <div className="w-96 h-6 bg-gray-900 border-2 border-red-800 rounded-sm overflow-hidden shadow-lg">

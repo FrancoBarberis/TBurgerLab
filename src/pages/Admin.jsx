@@ -87,7 +87,7 @@ export default function Admin() {
 
   // Usuario autorizado: muestra el panel de edición centrado
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 overflow-auto">
+    <div className=" flex items-center justify-center bg-gray-900 overflow-auto">
       <div className="max-w-xl w-full bg-gray-800 rounded-lg shadow-lg p-8 mx-auto flex flex-col items-center px-4 relative">
         {popup.show && (
           <div className={`fixed top-8 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded shadow-lg z-50 text-center ${popup.type === 'success' ? 'bg-green-700 text-white' : 'bg-red-700 text-white'}`}>
