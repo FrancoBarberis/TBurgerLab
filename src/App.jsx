@@ -84,17 +84,16 @@ function App() {
           element={
             <>
               {isLoading && <LoadingScreen onLoadComplete={() => setIsLoading(false)} />}
-              {/* ...existing code... */}
               <Header 
                 onConfirmOrder={handleConfirmOrder}
                 onDiscardOrder={handleDiscardOrder}
                 isCartEmpty={isCartEmpty()}
               />
-              <div className="pt-16 w-screen">
-                <ParallaxSection speed={0.3} className="relative w-screen">
+              <div className="pt-16 w-screen bg-black">
+                <ParallaxSection speed={0.3} className="relative w-screen sm:bg-[#0a1020] lg:bg-black">
                   <Hero />
                 </ParallaxSection>
-                <ParallaxSection speed={0.6} isGallery={true} className="relative z-10 -mt-32 w-screen">
+                <ParallaxSection speed={0.6} isGallery={true} className="relative z-10 -mt-32 w-screen sm:bg-[#0a1020] lg:bg-black">
                   <Gallery 
                     ref={galleryRef}
                     onOrderChange={handleOrderChange}
