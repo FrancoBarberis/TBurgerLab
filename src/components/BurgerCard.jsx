@@ -41,8 +41,8 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
       {/* Content */}
   <div className="relative z-10 p-4 h-full flex flex-col text-center">
   <div className="w-full flex flex-col text-center sm:hidden h-full">
-    {/* CARD MOBILE */}
-        <h3 className="text-4xl 3724-font text-red-400 mb-4 drop-shadow-2xl uppercase">
+    {/* CARD MOBILE con TypedJS */}
+        <h3 className="text-5xl 3724-font text-red-400 mb-4 drop-shadow-2xl uppercase ">
           {burger.name}
         </h3>
         <div className="flex-1 flex items-center justify-center w-full">
@@ -55,7 +55,8 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
             <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 drop-shadow-2xl uppercase text-left w-full">
               {burger.name}
             </h3>
-            <ul className="text-gray-100 text-xs mb-6 leading-relaxed font-resident flex flex-col items-start gap-1 w-full text-left">
+            {/* LISTA DESKTOP */}
+            <ul className="text-gray-100 lg:text-xl mb-6 leading-relaxed font-thin flex flex-col items-start gap-0.2 w-full text-left">
               {(ingredientes ? ingredientes : burger.ingredients.split(',').map(i => ({nombre: i.trim(), icono: '�️'}))).map((i, idx) => (
                 <li key={idx} className="w-full text-left break-words">{i.icono} {i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)}</li>
               ))}
@@ -64,11 +65,11 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
         </div>
       </div>
     {/* Controles: solo en hover en desktop, abajo en ambas vistas */}
-    <div className="absolute left-2 right-2 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-90 transition-all duration-500 delay-400 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-2">
-      <div className="bg-black bg-opacity-75 rounded-sm backdrop-blur-sm p-3 w-full flex flex-col">
-        {/* Opción Simple */}
+    <div className="absolute left-0 right-0 z-20 opacity-100 sm:opacity-0 lg:group-hover:opacity-80 transition-all duration-500 delay-400 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-0">
+      <div className="bg-black bg-opacity-50 rounded-sm backdrop-blur-sm px-5 w-full flex flex-col">
+        {/* SIMPLE */}
   <div className="grid grid-cols-3 items-center gap-1 mb-1">
-          <span className="sm:text-3xl text-white font-semibold text-xl 3724-font text-left">Simple</span>
+          <span className="text-4xl text-white font-semibold lg:text-3xl 3724-font text-left ">Simple</span>
           <div className="flex items-center justify-center gap-1">
             <button 
               onClick={() => handleQuantityChange('simple', false)}
@@ -84,11 +85,11 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
               +
             </button>
           </div>
-          <span className="text-green-400 font-bold text-xs font-resident text-right">${burger.prices.simple}</span>
+          <span className="text-green-400 font-bold text-xs font-resident text-center">${burger.prices.simple}</span>
         </div>
-        {/* Opción Doble */}
+        {/* DOBLE */}
   <div className="grid grid-cols-3 items-center gap-1">
-          <span className="text-white font-semibold sm:text-3xl lg:text-xl 3724-font text-left">Doble</span>
+          <span className="text-white font-semibold text-4xl lg:text-3xl 3724-font text-left">Doble</span>
           <div className="flex items-center justify-center gap-1">
             <button 
               onClick={() => handleQuantityChange('doble', false)}
@@ -104,7 +105,7 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
               +
             </button>
           </div>
-          <span className="text-green-400 font-bold text-xs font-resident text-right">${burger.prices.doble}</span>
+          <span className="text-green-400 font-bold text-xs font-resident text-center">${burger.prices.doble}</span>
         </div>
       </div>
     </div>
