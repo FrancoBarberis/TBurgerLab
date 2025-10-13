@@ -1,6 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from "react";
 import BurgerCard from "./BurgerCard";
-import ParallaxText from "./ParallaxText";
 import FadeInElement from "./FadeInElement";
 import { burgers } from "../data/burgers";
 
@@ -26,18 +25,16 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
 
   return (
     // GRADIENTE CENTRAL GALERIA
-    <div className="w-screen min-h-dvh flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4 bg-black">
+    <div className="w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4 bg-black">
       {/* GRADIENTE SUPERIOR GALERIA */}
       <div className="absolute top-0 left-0 w-full h-[40rem] bg-gradient-to-b from-black via-[#0a1020] to-transparent z-10 pointer-events-none"></div>
       {/* Gradiente inferior para unir con el fondo negro */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-[#0a1020] to-transparent z-10 pointer-events-none"></div>
       <div className="relative z-10 flex flex-col pt-10 mb-2 w-full sm:pt-24">
         <FadeInElement className="mb-6">
-          <ParallaxText speed={0.05} className="w-full">
-            <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide">
+          <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase   text-center w-full tracking-wide">
               COMBOS
             </h2>
-          </ParallaxText>
         </FadeInElement>
         {/* CONTENEDOR CARDS */}
         <div className="grid  grid-cols-1 w-full gap-4 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
@@ -94,8 +91,8 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
           })}
         </div>
       </div>
-      <div className="w-full flex justify-center mt-4 mb-8 relative z-20">
-        <p className="text-gray-100 text-3xl  font-extralight 3724-font text-center max-w-md shadow-none">
+      <div className="w-full flex justify-center mt-4 mb-20 relative z-20">
+        <p className="text-gray-100 text-3xl  font-extralight 3724-font text-center max-w-md shadow-none cursor-default">
           Todos los combos incluyen papas
         </p>
       </div>
