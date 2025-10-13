@@ -27,7 +27,7 @@ const Hero = () => {
         loop 
         playsInline
         preload="metadata"
-        className="absolute w-full h-full object-cover z-0 sm:w-full sm:h-full sm:min-w-[100vw] sm:min-h-[100dvh] w-screen h-[60vh] min-h-[320px]"
+        className="absolute object-cover z-0 sm:w-full sm:h-full sm:min-w-[100vw] sm:min-h-[100dvh] w-screen h-[60vh] min-h-[320px]"
         style={{ 
           top: '0', 
           left: '0',
@@ -44,12 +44,12 @@ const Hero = () => {
       
       <div className="sm:text-right text-center text-white drop-shadow-2xl sm:transform -translate-y-16 relative z-10 px-4 py-8 w-full">
         <ParallaxText speed={0.6} fadeOut={true} className="block">
-          <h1 className="sm:text-6xl text-3xl font-resident text-red-400 mb-4 leading-tight uppercase drop-shadow-2xl">
+          <h1 className="sm:text-3xl lg:text-9xl 3724-font text-red-400 mb-4 leading-tight uppercase drop-shadow-2xl">
             Los sabores se<br/>descontrolaron
           </h1>
         </ParallaxText>
         <ParallaxText speed={0.5} fadeOut={true} className="block">
-          <p className="sm:text-2xl text-base font-resident text-gray-200 opacity-90 drop-shadow-xl">
+          <p className="sm:text-2xl lg:text-6xl text-base 3724-font text-gray-200 opacity-90 drop-shadow-xl">
             ahora solo queda sobrevivir al menú
           </p>
         </ParallaxText>
