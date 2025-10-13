@@ -88,13 +88,14 @@ function App() {
                 onDiscardOrder={handleDiscardOrder}
                 isCartEmpty={isCartEmpty()}
               />
-              <div className="pt-16 w-screen bg-black">
+              <div className="md:pt-16 w-screen sm:bg-[#0a1020] md:bg-black">
                 <Hero/>
                 <Gallery 
                     ref={galleryRef}
                     onOrderChange={handleOrderChange}
                     order={order}
                     prices={prices}
+                    className= "bg-white"
                   />
               </div>
               <Modal

@@ -1,6 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from "react";
 import BurgerCard from "./BurgerCard";
-import FadeInElement from "./FadeInElement";
 import { burgers } from "../data/burgers";
 
 const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
@@ -25,19 +24,17 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
 
   return (
     // GRADIENTE CENTRAL GALERIA
-    <div className="w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4 bg-black">
+    <div className="w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4 bg-transparent>">
       {/* GRADIENTE SUPERIOR GALERIA */}
-      <div className="absolute top-0 left-0 w-full h-[40rem] bg-gradient-to-b from-black via-[#0a1020] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-[40rem] bg-transparent z-10 pointer-events-none"></div>
       {/* Gradiente inferior para unir con el fondo negro */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-[#0a1020] to-transparent z-10 pointer-events-none"></div>
-      <div className="relative z-10 flex flex-col pt-10 mb-2 w-full sm:pt-24">
-        <FadeInElement className="mb-6">
-          <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase   text-center w-full tracking-wide">
+      <div className=" sm:bg-[#0a1020] lg:bg-gradient-to-t from-black via-[#0a1020] z-10 flex flex-col md:pt-10 lg:mb-2 w-full sm:pt-24">
+        <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12">
               COMBOS
-            </h2>
-        </FadeInElement>
+        </h2>
         {/* CONTENEDOR CARDS */}
-        <div className="grid  grid-cols-1 w-full gap-4 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
+        <div className="grid grid-cols-1 sm:w-5/6 lg:w-full gap-4 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
           {burgers.map((burger) => {
             const quantities = {
               simple: order[burger.id]?.simple || 0,
