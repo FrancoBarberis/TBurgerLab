@@ -50,7 +50,7 @@ const Modal = ({
                     const total = item.price * item.quantity;
                     return (
                       <li key={item.burgerId + '-' + item.type} className="mb-2 flex items-center justify-between">
-                        <span className="text-xl lg:text-4xl font-bold text-white">{item.name} <span className="text-gray-400 text-base lg:text-2xl font-normal">({item.type})</span></span>
+                        <span className="text-3xl sm:text-2xl lg:text-5xl font-bold text-white">{item.name} <span className="text-gray-400 text-2xl sm:text-xl lg:text-3xl font-normal">({item.type})</span></span>
                         <div className="flex items-center gap-2 justify-end">
                           <button type="button" className="bg-gray-700 hover:bg-gray-800 text-white w-6 h-6 rounded-sm flex items-center justify-center font-bold transition-colors text-xs font-resident focus:outline-none" onClick={(e) => { e.preventDefault(); onResumenChange?.decrementar(item.burgerId, item.type); }}>-</button>
                           <span className="font-mono text-lg lg:text-2xl text-white">x{item.quantity}</span>
@@ -61,8 +61,8 @@ const Modal = ({
                       </li>
                     );
                   })
-                ) : (
-                  <li>No hay productos seleccionados.</li>
+                  ) : ( 
+                    <li className="text-3xl sm:text-2xl lg:text-5xl text-center text-white mb-4">No hay productos seleccionados.</li>
                 )}
               </ul>
               {/* Total a pagar */}
