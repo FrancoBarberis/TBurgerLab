@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from "react";
+import React, { useRef, useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import BurgerCard from "./BurgerCard";
 import { burgers } from "../data/burgers";
 
@@ -22,12 +22,38 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
     resetAllQuantities,
   }));
 
+  // Fade-in para el título COMBOS
+  const combosRef = useRef(null);
+  const [showCombos, setShowCombos] = useState(false);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setShowCombos(entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px 0px -40% 0px",
+      }
+    );
+    if (combosRef.current) {
+      observer.observe(combosRef.current);
+    }
+    return () => {
+      if (combosRef.current) observer.unobserve(combosRef.current);
+    };
+  }, []);
+
   return (
     // GALLERY CONTAINER
-    <div className="bg-[#0a1020]  w-screen lg:mt-40 h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4>">
-      <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12">
-              COMBOS
-        </h2>
+    <div className="bg-[#0a1020] lg:pt-52 bg-gradient-to-b from-black to-[#0a1020] w-screen h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4">
+      <h2
+        ref={combosRef}
+        className={`text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12 transition-opacity duration-700 ${showCombos ? 'opacity-100' : 'opacity-0'}`}
+      >
+        COMBOS
+      </h2>
         {/* CONTENEDOR CARDS */}
         <div className="grid grid-cols-1 sm:w-5/6 lg:w-full gap-4 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
           {burgers.map((burger) => {
