@@ -50,13 +50,13 @@ const BurgerCard = forwardRef(({ burger, ingredientes, onQuantityChange, quantit
         </div>
       </div>
       {/* CARD DESKTOP */}
-  <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 sm:block hidden w-full text-center">
-          <div className="w-56 mx-auto flex flex-col items-start text-left">
-            <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 drop-shadow-2xl uppercase text-left w-full">
+  <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full">
+          <div className="w-full flex flex-col text-left">
+            <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 text-left w-auto">
               {burger.name}
             </h3>
             {/* LISTA DESKTOP */}
-            <ul className="text-gray-100 lg:text-xl mb-6 leading-relaxed font-thin flex flex-col items-start gap-0.2 w-full text-left">
+            <ul className="text-gray-100 lg:text-xl font-thin flex flex-col gap-0.2 w-full text-left">
               {(ingredientes ? ingredientes : burger.ingredients.split(',').map(i => ({nombre: i.trim(), icono: '�️'}))).map((i, idx) => (
                 <li key={idx} className="w-full text-left break-words">{i.icono} {i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)}</li>
               ))}

@@ -34,7 +34,7 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
       <div className="relative z-10 flex flex-col pt-10 mb-2 w-full sm:pt-24">
         <FadeInElement className="mb-6">
           <ParallaxText speed={0.05} className="w-full">
-            <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase drop-shadow-2xl text-center w-full tracking-wide">
+            <h2 className="text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide">
               COMBOS
             </h2>
           </ParallaxText>
