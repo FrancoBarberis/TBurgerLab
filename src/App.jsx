@@ -166,6 +166,7 @@ function App() {
                   const tieneNumero = /[0-9]/.test(direccion);
                   if (!tieneLetra || !tieneNumero) {
                     setDireccionModalOpen(false);
+                    setModalInputValue('');
                     setModal({
                       isOpen: true,
                       type: 'alert',
@@ -174,10 +175,12 @@ function App() {
                       onConfirm: () => {
                         setModal({ ...modal, isOpen: false });
                         setDireccionModalOpen(true);
+                        setModalInputValue('');
                       },
                       onClose: () => {
                         setModal({ ...modal, isOpen: false });
                         setDireccionModalOpen(true);
+                        setModalInputValue('');
                       }
                     });
                   } else {

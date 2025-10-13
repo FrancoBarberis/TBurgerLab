@@ -39,8 +39,7 @@ const DireccionModal = ({
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-sm transition-colors border border-red-500 font-['3724-font'] uppercase tracking-wide"
-              disabled={!value || value.length < 5}
+              className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-sm transition-colors border border-red-500 font-['3724-font'] uppercase tracking-wide cursor-pointer"
             >
               Enviar
             </button>

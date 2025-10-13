@@ -46,16 +46,18 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
   }, []);
 
   return (
-    // GALLERY CONTAINER
-    <div className="bg-[#0a1020] lg:pt-52 bg-gradient-to-b from-black to-[#0a1020] w-screen h-full flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4">
-      <h2
+  // GALLERY CONTAINER
+  <div className="bg-black lg:bg-gradient-to-b lg:from-black lg:to-[#0a1020] lg:pt-52 w-screen min-h-screen flex flex-col items-center justify-center px-0 overflow-hidden relative pb-4">
+  {/* Gradiente azul inferior solo en mobile, dentro de la galería */}
+  <div className="absolute bottom-0 left-0 w-full h-12 pointer-events-none z-0 sm:hidden" style={{background: 'linear-gradient(to top, #0a1020 90%, transparent 100%)'}}></div>
+        <h2
         ref={combosRef}
-        className={`text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-12 transition-opacity duration-700 ${showCombos ? 'opacity-100' : 'opacity-0'}`}
+          className={`text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-6 lg:mb-0 transition-opacity duration-700 ${showCombos ? 'opacity-100' : 'opacity-0'}`}
       >
         COMBOS
       </h2>
-        {/* CONTENEDOR CARDS */}
-        <div className="grid grid-cols-1 sm:w-5/6 lg:w-full gap-4 justify-center items-center sm:flex sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
+  {/* CONTENEDOR CARDS */}
+  <div className="flex flex-col w-screen min-h-screen gap-4 justify-center items-center sm:w-5/6 lg:w-full sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
           {burgers.map((burger) => {
             const quantities = {
               simple: order[burger.id]?.simple || 0,

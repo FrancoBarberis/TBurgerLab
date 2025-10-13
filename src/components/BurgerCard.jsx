@@ -71,8 +71,8 @@ const BurgerCard = forwardRef(
               />
             </div>
           </div>
-          {/* CARD DESKTOP */}
-          <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full">
+          {/* CARD DESKTOP SOLO EN SM+ */}
+          <div className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full">
             <div className="w-full flex flex-col text-left">
               <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 text-left w-auto">
                 {burger.name}

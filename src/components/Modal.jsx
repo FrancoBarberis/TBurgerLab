@@ -101,7 +101,7 @@ const Modal = ({
           ) : (
             <>
               <p className="text-gray-100 mb-6 leading-relaxed">
-                {message}
+                <span className="block text-base lg:text-2xl text-red-400 font-bold mb-2">{message}</span>
               </p>
               {type === 'prompt' && (
                 <>
