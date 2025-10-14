@@ -8,7 +8,7 @@ const Header = ({ onConfirmOrder, onDiscardOrder, isCartEmpty }) => {
           <span className="text-red-500">T-B</span>URGER<span className="text-red-500">.L</span>ABS
         </h1>
       </div>
-      <div className="flex gap-3 lg:gap-4">
+      <div className="header-buttons flex gap-3 lg:gap-4">
         <button 
           onClick={isCartEmpty ? undefined : onConfirmOrder}
           disabled={isCartEmpty}

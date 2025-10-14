@@ -1,6 +1,5 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import IngredientesAnimados from "./IngredientesAnimados";
-import IngredientesTypedVertical from "./IngredientesTypedVertical";
 
 // ingredientes: array de objetos { nombre, icono }
 const BurgerCard = forwardRef(
@@ -51,11 +50,11 @@ const BurgerCard = forwardRef(
         {/* Card content */}
         <div className="card-content relative z-10 p-4 h-full flex flex-col sm:align-middle text-center">
           <div className="card-header flex flex-col justify-start  lg:opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full h-full">
-            <h3 className="card-name text-7xl lg:text-4xl 3724-font font-bold pt-10 lg:pt-0 text-red-400 lg:mb-4 mb-20 lg:text-left text-center w-auto">
+            <h3 className="card-name text-7xl lg:text-4xl 3724-font font-bold pt-10 lg:pt-0 text-red-400 lg:mb-4 mb-20 text-left pl-4 lg:pl-0 w-auto">
                 {burger.name}
               </h3>
               {/* LISTA INGREDIENTES */}
-              <ul className="card-list text-4xl text-gray-100 lg:text-xl font-thin flex flex-col gap-0.2 w-full h-fit lg:text-left">
+              <ul className="card-list text-4xl text-gray-100 lg:text-xl font-thin flex flex-col justify-center gap-0.2 w-full h-fit  lg:text-left">
                 {(ingredientes
                   ? ingredientes
                   : burger.ingredients

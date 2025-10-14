@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const LazyImage = ({ src, alt, className, placeholder, style, onLoad }) => {
+const LazyImage = ({ src, className, placeholder, style, onLoad }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef();
