@@ -52,7 +52,7 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
   <div className="absolute bottom-0 left-0 w-full h-12 pointer-events-none z-0 sm:hidden" style={{background: 'linear-gradient(to top, #0a1020 90%, transparent 100%)'}}></div>
         <h2
         ref={combosRef}
-          className={`text-6xl lg:text-6xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-6 lg:mb-0 transition-opacity duration-700 ${showCombos ? 'opacity-100' : 'opacity-0'}`}
+          className={`text-6xl lg:text-7xl 3724-font text-red-400 uppercase text-center w-full tracking-wide mb-6 lg:mb-0 transition-opacity duration-700 ${showCombos ? 'opacity-100' : 'opacity-0'}`}
       >
         COMBOS
       </h2>
