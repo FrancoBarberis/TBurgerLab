@@ -13,7 +13,7 @@ export const burgers = [
     id: 'jill',
     name: 'Jill',
     backgroundImage: '/imgs/Jill.webp',
-    ingredients: 'Queso dambo, cebolla, tomate, lechuga, salsa crema de mostaza con miel',
+    ingredients: 'Queso dambo, cebolla, tomate, lechuga, salsa de mostaza con miel',
     prices: {
       simple: 10700,
       doble: 12000

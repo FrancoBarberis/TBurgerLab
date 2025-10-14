@@ -57,7 +57,7 @@ const Gallery = forwardRef(({ onOrderChange, order, prices }, ref) => {
         COMBOS
       </h2>
   {/* CONTENEDOR CARDS */}
-  <div className="flex flex-col w-screen min-h-screen gap-4 justify-center items-center sm:w-5/6 lg:w-full sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
+  <div className="cards-container flex flex-col w-screen min-h-screen gap-4 justify-center items-center sm:w-5/6 lg:w-full sm:flex-row sm:flex-nowrap sm:gap-2 sm:justify-center sm:items-center">
           {burgers.map((burger) => {
             const quantities = {
               simple: order[burger.id]?.simple || 0,

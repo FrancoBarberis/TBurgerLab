@@ -30,11 +30,11 @@ const BurgerCard = forwardRef(
 
     return (
       <div
-        className={`group relative flex-shrink-0 w-full h-[calc(100vh-6rem)] sm:w-40 sm:h-80 sm:hover:w-56 sm:hover:h-80 shadow-lg sm:hover:shadow-2xl sm:hover:z-20 border-0 m-0 transition-all duration-700 ease-in-out ${className} shadow-[0_8px_32px_-8px_rgba(0,0,0,0.7)]`}
+        className={`burger-card group relative flex-shrink-0 w-full h-[calc(100vh-6rem)] sm:w-40 sm:h-80 sm:hover:w-56 sm:hover:h-80 shadow-lg sm:hover:shadow-2xl sm:hover:z-20 border-0 m-0 transition-all duration-700 ease-in-out ${className} shadow-[0_8px_32px_-8px_rgba(0,0,0,0.7)]`}
       >
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700 brightness-125 group-hover:brightness-100 h-full w-full"
+          className="card-image absolute inset-0 bg-cover bg-center transition-all duration-700 brightness-95  lg:brightness-125 group-hover:brightness-150 h-full w-full"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(${
               burger.backgroundImage ||
@@ -48,37 +48,14 @@ const BurgerCard = forwardRef(
           }}
         />
 
-        {/* Content */}
-        <div className="relative z-10 p-4 h-full flex flex-col text-center">
-          <div className="w-full flex flex-col text-center sm:hidden h-full">
-            {/* CARD MOBILE con TypedJS */}
-            <h3 className="text-5xl 3724-font text-red-400 mb-4 drop-shadow-2xl uppercase ">
-              {burger.name}
-            </h3>
-            <div className="flex-1 flex items-center justify-center w-full">
-              <IngredientesTypedVertical
-                ingredientes={
-                  ingredientes
-                    ? ingredientes.map(
-                        (i) =>
-                          `${i.icono} ${
-                            i.nombre.charAt(0).toUpperCase() + i.nombre.slice(1)
-                          }`
-                      )
-                    : burger.ingredients.split(",").map((i) => i.trim())
-                }
-                backSpeed={120}
-              />
-            </div>
-          </div>
-          {/* CARD DESKTOP SOLO EN SM+ */}
-          <div className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full">
-            <div className="w-full flex flex-col text-left">
-              <h3 className="text-4xl 3724-font font-bold text-red-400 mb-4 text-left w-auto">
+        {/* Card content */}
+        <div className="card-content relative z-10 p-4 h-full flex flex-col sm:align-middle text-center">
+          <div className="card-header flex flex-col justify-start  lg:opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:delay-500 w-full h-full">
+            <h3 className="card-name text-7xl lg:text-4xl 3724-font font-bold pt-10 lg:pt-0 text-red-400 lg:mb-4 mb-20 lg:text-left text-center w-auto">
                 {burger.name}
               </h3>
-              {/* LISTA DESKTOP */}
-              <ul className="text-gray-100 lg:text-xl font-thin flex flex-col gap-0.2 w-full text-left">
+              {/* LISTA INGREDIENTES */}
+              <ul className="card-list text-4xl text-gray-100 lg:text-xl font-thin flex flex-col gap-0.2 w-full h-fit lg:text-left">
                 {(ingredientes
                   ? ingredientes
                   : burger.ingredients
@@ -91,11 +68,9 @@ const BurgerCard = forwardRef(
                   </li>
                 ))}
               </ul>
-            </div>
           </div>
-        </div>
-        {/* CONTENEDOR BOTONERA */}
-        <div className="absolute left-0 right-0 z-20 opacity-100 sm:opacity-0 lg:group-hover:opacity-80 transition-all duration-300 group-hover:delay-500 delay-0 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-0">
+          {/* CONTENEDOR BOTONERA */}
+        <div className="card-buttons absolute left-0 right-0 z-20 opacity-100 sm:opacity-0 lg:group-hover:opacity-80 transition-all duration-300 group-hover:delay-500 delay-0 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 bottom-0">
           {/* BOTONERA */}
           <div className="bg-black bg-opacity-50 rounded-sm backdrop-blur-sm px-5 w-full flex flex-col">
             {/* SIMPLE */}
@@ -151,6 +126,8 @@ const BurgerCard = forwardRef(
               </span>
             </div>
           </div>
+        </div>
+        
         </div>
       </div>
     );

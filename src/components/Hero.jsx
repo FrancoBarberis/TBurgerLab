@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     // CONTAINER HERO
-    <div className="relative w-screen h-dvh min-h-[320px] lg:mt-12 flex items-center justify-center ">
+    <div className="relative w-screen h-dvh mt-10 lg:mt-6 flex items-center justify-center ">
       {/* Video de fondo */}
       <video
         ref={videoRef}
