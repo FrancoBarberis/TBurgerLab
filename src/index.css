@@ -1,3 +1,6 @@
+body {
+  font-family: '3724-font', monospace, sans-serif !important;
+}
 /* Forzar fuente del sistema en el panel de admin */
 .admin-panel {
   font-family: sans-serif !important;
