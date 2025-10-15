@@ -41,6 +41,7 @@ export default function Admin() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log('Email ingresado:', email);
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
@@ -87,7 +88,7 @@ export default function Admin() {
 
   // Usuario autorizado: muestra el panel de edición centrado
   return (
-    <div className=" flex items-center justify-center bg-gray-900 overflow-auto">
+    <div className="admin-panel flex items-center justify-center bg-gray-900 overflow-auto">
       <div className="max-w-xl w-full bg-gray-800 rounded-lg shadow-lg p-8 mx-auto flex flex-col items-center px-4 relative">
         {popup.show && (
           <div className={`fixed top-8 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded shadow-lg z-50 text-center ${popup.type === 'success' ? 'bg-green-700 text-white' : 'bg-red-700 text-white'}`}>
@@ -112,10 +113,10 @@ export default function Admin() {
                 <tr key={p.id}>
                   <td className="border p-2 text-white font-semibold">{p.nombre || 'Sin nombre'}</td>
                   <td className="border p-2">
-                    <input type="number" value={p.simple} onChange={e => handleChange(p.id, 'simple', e.target.value)} className="w-20 p-1 border rounded bg-gray-900 text-white" />
+                    <input type="number" value={p.simple} onChange={e => handleChange(p.id, 'simple', e.target.value)} className="w-20 p-1 border rounded bg-gray-900 text-white font-sans" />
                   </td>
                   <td className="border p-2">
-                    <input type="number" value={p.doble} onChange={e => handleChange(p.id, 'doble', e.target.value)} className="w-20 p-1 border rounded bg-gray-900 text-white" />
+                    <input type="number" value={p.doble} onChange={e => handleChange(p.id, 'doble', e.target.value)} className="w-20 p-1 border rounded bg-gray-900 text-white font-sans" />
                   </td>
                   <td className="border p-2">
                     <button onClick={() => handleSave(p.id)} className="bg-green-600 text-white px-2 py-1 rounded">Guardar</button>

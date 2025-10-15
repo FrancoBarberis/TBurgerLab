@@ -1,3 +1,7 @@
+/* Forzar fuente del sistema en el panel de admin */
+.admin-panel {
+  font-family: sans-serif !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,9 +49,6 @@
 }
 
 
-body {
-  font-family: '3724-font', monospace, sans-serif !important;
-}
 
 a {
   font-weight: 500;
