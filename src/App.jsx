@@ -190,11 +190,12 @@ function App() {
                   } else {
                     // Construir resumen de productos
                     const resumen = buildResumen();
+                    const numeroWSP = "5491171545860";
                     const productos = resumen.map(item => `${item.name} (${item.type}): x${item.quantity}`).join('\n');
                     const mensaje = encodeURIComponent(
                       `Hola! Mi dirección de entrega es: ${direccion}\n\nPedido:\n${productos}`
                     );
-                    window.open(`https://wa.me/?text=${mensaje}`, '_blank');
+                    window.open(`https://wa.me/${numeroWSP}?text=${mensaje}`, '_blank');
                     setOrder({});
                     setDireccionModalOpen(false);
                     setModalInputValue('');
